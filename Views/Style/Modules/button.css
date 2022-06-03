@@ -1,0 +1,17 @@
+.button{
+    display: inline-block;
+    align-self: center;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0 5px #D8E1E8 ;
+}
+
+.button-login{
+    background-color: green;
+    color: white;
+}
+
+.button-login:hover{
+    background-color: darkgreen;
+}
