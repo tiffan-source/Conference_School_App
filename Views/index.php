@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="Style/Modules/button.css">
 </head>
 <body>
-    <button type="submit" class="button button-delete" >Delete</button>
+    <button type="submit" class="button button-delete" ><i class="fa-solid fa-trash-can"></i> Delete</button>
 
 </body>
+<script src="https://kit.fontawesome.com/feec902bb6.js" crossorigin="anonymous"></script>
 </html>
