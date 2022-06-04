@@ -15,3 +15,12 @@
 .button-login:hover{
     background-color: darkgreen;
 }
+
+.button-delete{
+    background-color: hsl(0, 89%, 56%);
+    color: white;
+}
+
+.button-delete:hover{
+    background-color: darkred;
+}

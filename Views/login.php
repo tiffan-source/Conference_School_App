@@ -37,7 +37,7 @@
                 <label class="login-box-input-label" for="remember">Se rappeler de moi</label>
             </div>
 
-            <input type="submit" class="button button-login" value="Login">
+            <button type="submit" class="button button-login" >Login</button>
         </div>
     </div>
 </body>
