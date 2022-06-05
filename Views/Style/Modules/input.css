@@ -1,4 +1,4 @@
-.input {
+.input, .text-area {
     box-shadow: 0 0 4px #D8E1E8;
     width: 100%;
     font-size: 1.1rem;
@@ -8,3 +8,7 @@
     border: 1px solid #d5e3ec;
 }
 
+.text-area{
+    padding: 1.5rem 1rem;
+    font-size: 1.05rem;
+}
