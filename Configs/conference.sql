@@ -19,6 +19,7 @@ CREATE TABLE activite (
 	description text NOT NULL,
 	id_conf_conference integer
 	
+	
 
 );
 

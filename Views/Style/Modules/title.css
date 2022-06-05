@@ -1,10 +1,18 @@
-.panel-title{
+.panel-title {
     font-size: 1.5rem;
     margin: 1rem 0;
 }
 
-.title-login{
+.title-login {
     font-size: 1.8rem;
     color: #002147;
     text-align: center;
+}
+
+.title-delete {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #002147;
+    margin-bottom: 2rem;
 }

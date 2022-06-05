@@ -34,6 +34,7 @@
 
             <div>
                 <input type="checkbox" id="remember">
+                
                 <label class="login-box-input-label" for="remember">Se rappeler de moi</label>
             </div>
 
