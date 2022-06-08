@@ -22,15 +22,38 @@
             <h1 class="create-publication-title">
                 Manager de publication
             </h1>
-            <form method="" action="" class="create-publication-form">
+
+            <form method="post" action="../Controllers/action_create_publication.php" class="create-publication-form">
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Nom de la publication</label>
-                    <input type="text" id="name_publication" class="input">
+                    <input name = "nom_pub" type="text" id="name_publication" class="input">
                 </div>
+
+                <div class="create-publication-groupefield">
+                    <label class="create-publication-label" for="name_publication">Id de la conference</label>
+                    <select name="id_selected" id="id_selected">
+                        <?php
+                            
+                            include("../Models/conference.php");
+                            
+                            $conf = new conference(1);
+                            
+                            $tab = $conf->getAllId();
+
+                            foreach ($tab as $x => $x_value){
+                                echo "<option value = ".$x.">"."#"."$x"."    ".$x_value."</option>";
+                            }
+                            
+                        ?>
+ 
+                    </select>
+                </div>
+
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="content_publication">Contenue de la publication</label>
-                    <textarea class="text-area" name="" id="" cols="30" rows="10"></textarea>
+                    <textarea class="text-area" name="content_pub" id="" cols="30" rows="10"></textarea>
                 </div>
+                <input type = "submit" class ="button button-create" value = "Créer">
             </form>
         </div>
     </div>

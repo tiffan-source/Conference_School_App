@@ -9,12 +9,12 @@ class Connection{
 	$host = 'localhost';
 	$dbname = 'Conference';
 	$username = 'root';
-	$password = 'password';
+	$password = '';
 
 	$dsn = "mysql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
 		try{
 			$this->connexion = new PDO($dsn);
-			echo "Réussi !";
+			//echo "Réussi !";
 		} catch (PDOException $e){
 		echo $e->getMessage();
 		}

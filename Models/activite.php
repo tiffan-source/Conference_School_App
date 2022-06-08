@@ -35,7 +35,7 @@
 			$this->id_conf =$args[3];
             break;
         case 1:
-                       $this->con = new Connection();
+                       zz$this->con = new Connection();
 			$this->c = $this->con->getConnection();
 			$this->id_act =$args[0];
 			$this->nom_act ="";

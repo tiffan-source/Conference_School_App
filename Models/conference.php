@@ -2,7 +2,7 @@
 	require("Connection.php");
 	
 	class conference{
-	       private $con;
+	    private $con;
 		private $c;
 		private $id_conf;
 		private $nom_conf;
@@ -21,20 +21,26 @@
     
     switch($ctp)
     {
-        case 3:
+        case 2:
            
-                       $this->con = new Connection();
+             $this->con = new Connection();
 			$this->c = $this->con->getConnection();
-			$this->id_conf =$args[0];
-			$this->nom_conf =$args[1];
-			$this->description = $args[2];
+			//$this->id_conf =$args[0];
+			$this->nom_conf =$args[0];
+			$this->description = $args[1];
             break;
         case 1:
-                     $this->con = new Connection();
+             $this->con = new Connection();
 			$this->c = $this->con->getConnection();
+			echo "Créé !";
+			//echo $args;
+
 			$this->id_conf =$args[0];
-			$this->nom_conf ="";
-			$this->description = "";
+
+			echo "******".$args[0];
+			//echo "trtuy ".$this->id_conf; 
+			/*$this->nom_conf ="";
+			$this->description = "";*/
            
             break;
         
@@ -51,12 +57,14 @@
 		
 	    
 	   function getId(){
+		    
 			return $this->id_conf;
 		}
 		
 		function getNom(){
 			return $this->nom_conf;
 		}
+		
 		
 		function getDescription(){
 			return $this->description;
@@ -66,7 +74,7 @@
 		public function createConference(){
 		
 			try{
-				$query = "insert into conference  values ($this->id_conf,'$this->nom_conf','$this->description');";
+				$query = "insert into conference  (nom_conf, description) values ('$this->nom_conf','$this->description');";
 			
 				$r = $this->c->exec ($query);
 				
@@ -101,7 +109,23 @@
 			}
 		}
 		
-		
+		public function getAllId(){
+			$this->con = new Connection();
+			$this->c = $this->con->getConnection();
+
+			$query = "select id_conf, nom_conf from conference";
+			
+			$tab = array();
+			$r = $this->c->query ($query);
+			
+			while($donnees = $r->fetch()){
+				$i = $donnees["id_conf"];
+				$nom = $donnees["nom_conf"];
+				$tab[$i] = $nom;
+			}
+			return $tab;
+
+		}
 		
 		
 		public function updateConferenceByDescription($desc){

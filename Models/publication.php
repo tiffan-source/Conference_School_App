@@ -16,23 +16,23 @@
 		public function __construct()
 		
   {
-    echo 'Hello';
+    //echo 'Hello';
     $ctp = func_num_args();
    
     $args = func_get_args();
    
-    echo $ctp;
+    //echo $ctp;
     
     switch($ctp)
     {
-        case 4:
+        case 3:
            
                        $this->con = new Connection();
 			$this->c = $this->con->getConnection();
-			$this->id =$args[0];
-			$this->titre =$args[1];
-			$this->contenu = $args[2];
-			$this->id_conf =$args[3];
+			//$this->id =$args[0];
+			$this->titre =$args[0];
+			$this->contenu = $args[1];
+			$this->id_conf =$args[2];
             break;
          case 1:
                        $this->con = new Connection();
@@ -75,12 +75,12 @@
 		public function createPublication(){
 		
 			try{
-			$query = "insert into publication  values ('$this->titre','$this->contenu',$this->id,$this->id_conf) ;";
+			$query = "insert into publication (titre, id_conf_conference, contenu) values ('$this->titre',$this->id_conf, '$this->contenu') ;";
 			echo $query;
 			
 				$r = $this->c->exec ($query);
-				echo $r;
-				echo $query;
+				//echo $r;
+				//echo $query;
 				
 			} catch (PDOException $e) {
 				$e->getMessage();
@@ -126,10 +126,6 @@
 				$e->getMessage();
 			}
 		}
-		
-		
-		
-		
 		
 		
 		

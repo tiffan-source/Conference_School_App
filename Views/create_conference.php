@@ -10,14 +10,30 @@
     <link rel="stylesheet" href="Style/Modules/title.css">
     <link rel="stylesheet" href="Style/Modules/input.css">
     <link rel="stylesheet" href="Style/Modules/button.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="Style/Modules/create_conference.css">
+    <link rel="stylesheet" href="Style/Layouts/create_conference.layout.css">
+    <title>create_conference</title>
 </head>
 <body>
-    <div id="content-app">
+<div id="content-app">
         <?php include("panel.php") ?>
         
         <div id="create-conference">
-
+            <h1 class="create-publication-title">
+                Créer une conférence
+            </h1>
+            <form method="post" action="../Controllers/action_create_conference.php" class="create-conference-form">
+                <div class="create-conference-groupefield">
+                    <label class="create-conference-label" for="name_conference">Nom de la conférence</label>
+                    <input type="text" id="name_conference" class="input" name = "nom">
+                </div>
+                <div class="create-conference-groupefield">
+                    <label class="create-conference-label" for="content_conference">Description de la conférence</label>
+                    <textarea class="text-area" name="desc" id="" cols="30" rows="10"></textarea>
+                </div>
+                <input type = "submit" class ="button button-create" value = "Créer">
+            </form>
+            
         </div>
     </div>
 </body>
