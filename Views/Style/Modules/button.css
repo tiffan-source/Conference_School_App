@@ -21,6 +21,15 @@
     color: white;
 }
 
+.button-create{
+    background-color: #002147;
+    color: white;
+}
+
+.button-create:hover{
+    background-color: #7de3e1;
+}
+
 .button-delete:hover{
     background-color: darkred;
 }

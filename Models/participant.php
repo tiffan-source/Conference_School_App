@@ -13,29 +13,19 @@
    
     $args = func_get_args();
    
-    
-    switch($ctp)
-    {
-        case 3:
-           
-                       $this->con = new Connection();
+	if(gettype(agrs[0] == "string")){	           
+            $this->con = new Connection();
 			$this->c = $this->con->getConnection();
 			$this->id_part =$args[0];
 			$this->nom_part =$args[1];
-			
-            break;
-        case 1:
-                     $this->con = new Connection();
+	}
+	if(gettype(agrs[0] == "integer")){	           
+            $this->con = new Connection();
 			$this->c = $this->con->getConnection();
 			$this->id_part =$args[0];
 			$this->nom_part ="";
 			
-           
-            break;
-        
-         default:
-            break;
-    }
+	}
 }
 
 		

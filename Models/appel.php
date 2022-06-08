@@ -24,13 +24,13 @@
     
     switch($ctp)
     {
-        case 3:
+        case 2:
            
-                       $this->con = new Connection();
+        	$this->con = new Connection();
 			$this->c = $this->con->getConnection();
-			$this->id=$args[0];
-			$this->sujet =$args[1];
-			$this->id_conf =$args[2];
+			//$this->id=$args[0];
+			$this->sujet =$args[0];
+			$this->id_conf =$args[1];
             break;
          case 1:
                        
