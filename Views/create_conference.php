@@ -25,11 +25,11 @@
             <form method="post" action="../Controllers/action_create_conference.php" class="create-conference-form">
                 <div class="create-conference-groupefield">
                     <label class="create-conference-label" for="name_conference">Nom de la conférence</label>
-                    <input type="text" id="name_conference" class="input" name = "nom">
+                    <input type="text" id="name_conference" class="input" name = "nom_conference">
                 </div>
                 <div class="create-conference-groupefield">
                     <label class="create-conference-label" for="content_conference">Description de la conférence</label>
-                    <textarea class="text-area" name="desc" id="" cols="30" rows="10"></textarea>
+                    <textarea class="text-area" name="desc_conference" id="" cols="30" rows="10"></textarea>
                 </div>
                 <input type = "submit" class ="button button-create" value = "Créer">
             </form>

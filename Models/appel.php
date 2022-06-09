@@ -7,12 +7,7 @@
 		private $id;
 		private $sujet;
 		private $id_conf;
-		
-		
-		
-		
-		
-		public function __construct()
+		public function __construct();
 		
   {
     echo 'Hello';
@@ -106,12 +101,6 @@
 				$e->getMessage();
 			}
 		}
-		
-		
-		
-		
-		
-		
 		
 			public function readAppel(){
 		

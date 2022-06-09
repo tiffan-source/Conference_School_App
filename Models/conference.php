@@ -1,63 +1,56 @@
 <?php
 	require("Connection.php");
+
+	//Changer et documenter
 	
 	class conference{
 	    private $con;
 		private $c;
+
 		private $id_conf;
 		private $nom_conf;
 		private $description;
 		
-		
-		
-		
-		
-		public function __construct()
-{
-    $ctp = func_num_args();
+		public function __construct(){
+
+			$ctp = func_num_args();
+			$args = func_get_args();
    
-    $args = func_get_args();
-   
-    
-    switch($ctp)
-    {
-        case 2:
-           
-             $this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			//$this->id_conf =$args[0];
-			$this->nom_conf =$args[0];
-			$this->description = $args[1];
-            break;
-        case 1:
-             $this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			echo "Créé !";
-			//echo $args;
+			//Changer le constructeur
+		
+			switch($ctp)
+			{
+				case 2:
+				
+					$this->con = new Connection();
+					$this->c = $this->con->getConnection();
+					//$this->id_conf =$args[0];
+					$this->nom_conf =$args[0];
+					$this->description = $args[1];
+					break;
+				case 1:
+					$this->con = new Connection();
+					$this->c = $this->con->getConnection();
+					echo "Créé !";
+					//echo $args;
 
-			$this->id_conf =$args[0];
+					$this->id_conf =$args[0];
 
-			echo "******".$args[0];
-			//echo "trtuy ".$this->id_conf; 
-			/*$this->nom_conf ="";
-			$this->description = "";*/
-           
-            break;
-        
-         default:
-            break;
-    }
-}
+					echo "******".$args[0];
+					//echo "trtuy ".$this->id_conf; 
+					/*$this->nom_conf ="";
+					$this->description = "";*/
+				
+					break;
+				
+				default:
+					break;
+			}
+		}
 
-		
-		
-		
-		
-
-		
+			
 	    
 	   function getId(){
-		    
 			return $this->id_conf;
 		}
 		
@@ -85,29 +78,29 @@
 		
 			public function deleteConference(){
 		
-			try{
+				try{
+					
+					$query = "delete from conference where id_conf =$this->id_conf;";
 				
-				$query = "delete from conference where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
+					$r = $this->c->exec ($query);
+					
+				} catch (PDOException $e) {
+					$e->getMessage();
+				}
 			}
-		}
 		
 			public function updateConferenceByName($nom){
-		
-			try{
-				
-				$query = "update conference set nom_conf='$nom' where id_conf =$this->id_conf;";
 			
-				$r = $this->c->exec ($query);
+				try{
+					
+					$query = "update conference set nom_conf='$nom' where id_conf =$this->id_conf;";
 				
-			} catch (PDOException $e) {
-				$e->getMessage();
+					$r = $this->c->exec ($query);
+					
+				} catch (PDOException $e) {
+					$e->getMessage();
+				}
 			}
-		}
 		
 		public function getAllId(){
 			$this->con = new Connection();
@@ -116,7 +109,7 @@
 			$query = "select id_conf, nom_conf from conference";
 			
 			$tab = array();
-			$r = $this->c->query ($query);
+			$r = $this->c->query($query);
 			
 			while($donnees = $r->fetch()){
 				$i = $donnees["id_conf"];
@@ -160,5 +153,4 @@
 		}
 		
 	}
-
 ?>

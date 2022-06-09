@@ -4,14 +4,14 @@ class Connection{
 
 	private $connexion;
 
+	// Corriger et plutot utiliser des parametres
 	function __construct(){
-	
-	$host = 'localhost';
-	$dbname = 'Conference';
-	$username = 'root';
-	$password = '';
+		$host = 'localhost';
+		$dbname = 'Conference';
+		$username = 'root';
+		$password = '';
+		$dsn = "mysql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
 
-	$dsn = "mysql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
 		try{
 			$this->connexion = new PDO($dsn);
 			//echo "Réussi !";

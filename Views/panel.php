@@ -17,7 +17,7 @@
         <div class="panel-option-groupe">
             <h3 class="panel-title">Acceuil</h3>
             <ul>
-                <li class="panel-option-list"><a class="panel-link" href="#">Creer une conference</a></li>
+                <li class="panel-option-list"><a class="panel-link" href="../index.php?action=creer_conference">Creer une conference</a></li>
                 <li class="panel-option-list"><a class="panel-link" href="#">Supprimer une conference</a></li>
             </ul>
         </div>
