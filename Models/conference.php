@@ -1,55 +1,22 @@
 <?php
 	require("Connection.php");
 
-	//Changer et documenter
-	
-	class conference{
-	    private $con;
-		private $c;
-
+	class Conference{
 		private $id_conf;
-		private $nom_conf;
+		private $nom_conference;
 		private $description;
 		
-		public function __construct(){
-
-			$ctp = func_num_args();
-			$args = func_get_args();
-   
-			//Changer le constructeur
-		
-			switch($ctp)
-			{
-				case 2:
-				
-					$this->con = new Connection();
-					$this->c = $this->con->getConnection();
-					//$this->id_conf =$args[0];
-					$this->nom_conf =$args[0];
-					$this->description = $args[1];
-					break;
-				case 1:
-					$this->con = new Connection();
-					$this->c = $this->con->getConnection();
-					echo "Créé !";
-					//echo $args;
-
-					$this->id_conf =$args[0];
-
-					echo "******".$args[0];
-					//echo "trtuy ".$this->id_conf; 
-					/*$this->nom_conf ="";
-					$this->description = "";*/
-				
-					break;
-				
-				default:
-					break;
-			}
+		public function __construct($id_conf = null, $nom_conference = null, $description = null){
+			$this->id_conf = $id_conf;
+			$this->nom_conference = $nom_conference;
+			$this->description = $description;
 		}
-
-			
 	    
+		/**
+		 * All Getter
+		 */
+
+		/*
 	   function getId(){
 			return $this->id_conf;
 		}
@@ -62,95 +29,95 @@
 		function getDescription(){
 			return $this->description;
 		}
+		*/
+
+		/**
+		 * CRUD
+		 */
 		
-	
 		public function createConference(){
-		
-			try{
-				$query = "insert into conference  (nom_conf, description) values ('$this->nom_conf','$this->description');";
+			$new_connection = new Connection();
 			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
-		
-			public function deleteConference(){
-		
-				try{
-					
-					$query = "delete from conference where id_conf =$this->id_conf;";
-				
-					$r = $this->c->exec ($query);
-					
-				} catch (PDOException $e) {
-					$e->getMessage();
-				}
-			}
-		
-			public function updateConferenceByName($nom){
-			
-				try{
-					
-					$query = "update conference set nom_conf='$nom' where id_conf =$this->id_conf;";
-				
-					$r = $this->c->exec ($query);
-					
-				} catch (PDOException $e) {
-					$e->getMessage();
-				}
-			}
-		
-		public function getAllId(){
-			$this->con = new Connection();
-			$this->c = $this->con->getConnection();
+			$query = "INSERT INTO conference (nom_conf, description) VALUES (?, ?);";
 
-			$query = "select id_conf, nom_conf from conference";
-			
-			$tab = array();
-			$r = $this->c->query($query);
-			
-			while($donnees = $r->fetch()){
-				$i = $donnees["id_conf"];
-				$nom = $donnees["nom_conf"];
-				$tab[$i] = $nom;
-			}
-			return $tab;
+			$query_prepare = $new_connection->getConnection()->prepare($query);
 
+			$result = $query_prepare->execute([$this->nom_conference, $this->description]);
+
+			return $result;
 		}
 		
-		
-		public function updateConferenceByDescription($desc){
-		
-			try{
-				$query = "update conference set description='$desc' where id_conf =$this->id_conf;";
+		public function deleteConference(){
+			$new_connection = new Connection();
 			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
+			$query = "DELETE FROM conference WHERE id_conf = ?;";
+		
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute([$this->id_conf]);
+
+			return $result;
+		}
+	
+		public function updateConference(array $optionToModify){
+			$new_connection = new Connection();
+
+			$sentenceSet = "";
+			$valueTab = [];
+
+			foreach($optionToModify as $key => $value){
+				$sentenceSet .= " $key = ?,";
+				$valueTab[] = $value;
 			}
+
+			$valueTab[] = $this->id_conf;
+
+			$sentenceSet[-1] = " ";
+		
+			$query = 'UPDATE conference SET'.$sentenceSet.' WHERE id_conf = ?;';
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute($valueTab);
+
+			return $result;
 		}
 		
-		
-			public function readConference(){
-		
-			try{
-				
-				$query = "select nom_conf,description  from conference where id_conf =$this->id_conf;";
-			
-				$r = $this->c->query ($query);
-				
-				if ($donnees = $r->fetch())
-				 return "Nom de la conférence : ". $donnees['nom_conf'].'<br/>'. 
-				       "Description : ". $donnees['description'];
-				       return "yeah";
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
+		static public function getAllConference(){
+			$new_connection = new Connection();
+
+			$query = "SELECT * FROM conference";
+
+			$data_all_conference = $new_connection->getConnection()->query($query);
+
+			$tab_conference = [];
+
+			while($data = $data_all_conference->fetch()){
+				$conference_item = new Conference();
+
+				$conference_item->id_conf = $data['id_conf'];
+				$conference_item->nom_conference = $data['nom_conf'];
+				$conference_item->description = $data['description'];
+
+				$tab_conference[] = $conference_item;
 			}
+
+			return $tab_conference;
 		}
+		
+		static public function getConference($id){
+			$new_connection = new Connection();
+
+			$query = "SELECT * FROM conference WHERE id_conf = ?";
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$testQuery = $query_prepare->execute([$id]);
+
+			$data = $query_prepare->fetchAll();
+
+			return $data[0];
+		}
+		
 		
 	}
-?>
