@@ -1,0 +1,35 @@
+.button{
+    display: inline-block;
+    align-self: center;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0 5px #D8E1E8 ;
+}
+
+.button-login{
+    background-color: green;
+    color: white;
+}
+
+.button-login:hover{
+    background-color: darkgreen;
+}
+
+.button-delete{
+    background-color: hsl(0, 89%, 56%);
+    color: white;
+}
+
+.button-create{
+    background-color: #002147;
+    color: white;
+}
+
+.button-create:hover{
+    background-color: #7de3e1;
+}
+
+.button-delete:hover{
+    background-color: darkred;
+}
