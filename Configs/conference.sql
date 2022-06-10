@@ -1,6 +1,6 @@
 
 CREATE TABLE conference (
-	id_conf integer NOT NULL primary key AUTO_INCREMENT,
+	id_conf integer primary key AUTO_INCREMENT,
 	nom_conf varchar(50) NOT NULL,
 	description text NOT NULL
 

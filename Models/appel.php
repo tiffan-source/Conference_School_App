@@ -2,14 +2,15 @@
 	require("Connection.php");
 	
 	class appel {
-	       private  $con;
+	    private  $con;
 		private $c;
 		private $id;
 		private $sujet;
 		private $id_conf;
-		public function __construct();
-		
-  {
+
+		public function __construct()
+		{
+  
     echo 'Hello';
     $ctp = func_num_args();
    
