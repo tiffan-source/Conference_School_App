@@ -25,8 +25,17 @@ class Conference_controller{
         require("Views/create_conference.php");
     }
 
-    static function destruct_Controller(){
+    static function destruct_Controller($id){
         $data = Conference::getAllConference();
+
+        if($id){
+            $conf_to_delete = Conference::getConference($id);
+
+            $conf_to_delete->deleteConference();
+
+            $data = Conference::getAllConference();
+
+        }
 
         require("Views/supprimer.php");
     }

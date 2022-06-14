@@ -104,7 +104,7 @@
 
 			return $tab_conference;
 		}
-		
+
 		static public function getConference($id){
 			$new_connection = new Connection();
 
@@ -116,8 +116,8 @@
 
 			$data = $query_prepare->fetchAll();
 
-			return $data[0];
+			$conf = new Conference($data[0]["id_conf"], $data[0]["nom_conf"], $data[0]["description"]);
+
+			return $conf;
 		}
-		
-		
 	}

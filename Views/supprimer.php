@@ -24,26 +24,28 @@
 
         <div id="supprimer">
             <h1 class="title-delete">Supprimer une conférence</h1>
-        
-        <?php                                        
-            foreach ($data as $d_conf){
-        ?>
-                <div class='delete'>
 
-                <div class='delete-information'>
+	    <div>
+                <?php foreach ($data as $d_conf){ ?>
+                    <div class='delete'>
 
-                    <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
-                    
-                    <span class='delete-information-modification'>Modifié le 15/06/2022</span>
+                    <div class='delete-information'>
 
-                </div>
+                        <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
 
-                <button class ='button button-delete'>Supprimer</button>
-                
-                </div>
-        <?php } ?>
+                        <span class='delete-information-modification'>Modifié le 15/06/2022</span>
+
+                    </div>
+
+                    <button class ='button button-delete'>
+		      <a href=<?='index?action=detruire_conference&id='.$d_conf->id_conf ?> >Supprimer</a>
+		    </button>
+                    </div>
+                <?php } ?>
+
+            </div>
     </div>
-<!-- 
+<!--
     <script>
         function deleteFunction(s){
             alert(s)
