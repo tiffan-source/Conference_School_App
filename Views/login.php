@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="Style/Layouts/login.layouts.css">
     <link rel="stylesheet" href="Style/Modules/input.css">
     <link rel="stylesheet" href="Style/Modules/button.css">
+    <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
+    <link rel="stylesheet" href="Style/Modules/panel.css">
+    <link rel="stylesheet" href="Style/Modules/button.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -19,7 +23,7 @@
 
         <?php include("panel.php") ?>
 
-        <div id="login">
+        <form id="login" action="index.php?action=login" method="POST">
             <h1 class="title-login">Bienuvenue sur votre plateforme</h1>
 
             <div class="login-box-input">
@@ -39,7 +43,7 @@
             </div>
 
             <button type="submit" class="button button-login" >Login</button>
-        </div>
+</form>
     </div>
 </body>
 </html>

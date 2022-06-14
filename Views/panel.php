@@ -13,7 +13,12 @@
         <ul>
             <li class="panel-option-list"><a class="panel-link" href="#">Ajouter des activites</a></li>
             <li class="panel-option-list"><a class="panel-link" href="#">Propriete de la conference</a></li>
-            <li class="panel-option-list"><a class="panel-link" href="#">Ajouter des publications</a></li>
+            <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_publication">Ajouter des publications</a></li>
         </ul>
+    </div>
+    <div class="panel-login-groupe">
+        <button class="button button-secondary">
+            <a href="index.php?action=login">Login</a>
+        </button>
     </div>
 </div>

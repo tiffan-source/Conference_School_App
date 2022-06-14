@@ -45,28 +45,6 @@
 
             </div>
     </div>
-<!--
-    <script>
-        function deleteFunction(s){
-            alert(s)
-            chaine = parseInt(s);
-            var result = "<?php sup('"+chaine+"'); ?>";
-            document.write(result);
-        }
-    </script>
 
-        <?php //include("../Models/conference.php");
-
-            function sup($s){
-                echo "yes";
-                echo $s;
-                $s = (int)$s;
-                //echo $temp;
-                echo gettype($s);
-                $confer = new conference($s);
-                //echo $confer->getId();
-                $confer->deleteConference();
-            }
-        ?> -->
 </body>
 </html>

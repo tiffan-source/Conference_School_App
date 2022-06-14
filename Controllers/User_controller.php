@@ -1,33 +1,20 @@
 <?php
-require("Models/user.php");
+require_once("Models/user.php");
 
 class User_controller{
-    static function acceuil_Controller(){
-       
+    static public function login_Controller(){
         
-        require("Views/acceuil.php");
-    }
+        if($_POST){
+            $user_check = User::checkUser($_POST['user'], $_POST['password']);
+            var_dump($user_check);
 
-    static function create_Controller(){
-
-        /**
-         * Faire le controlle du POST
-         * 
-         * 
-         */
-
-        if ($_POST){
-            $username = $_POST['user'];
-            $password = $_POST['password'];
-             new user(null, $username, $password);
+            if($user_check){
+                
+            }else{
+                $error_connection = "username ou mot de passe incorrect";
+            }
         }
-
-        require("Views/accueil.php");
-    }
-
-    static function destruct_Controller(){
-        $data = Conference::getAllConference();
-
-        require("Views/supprimer.php");
+        
+        require_once("Views/login.php");
     }
 }

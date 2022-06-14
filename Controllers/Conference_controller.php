@@ -1,11 +1,11 @@
 <?php
-require("Models/conference.php");
+require_once("Models/conference.php");
 
 class Conference_controller{
     static function acceuil_Controller(){
         $data = Conference::getAllConference();
         
-        require("Views/acceuil.php");
+        require_once("Views/acceuil.php");
     }
 
     static function create_Controller(){
@@ -22,7 +22,7 @@ class Conference_controller{
             ( new Conference(null, $conference_name, $conference_desc) )->createConference();
         }
 
-        require("Views/create_conference.php");
+        require_once("Views/create_conference.php");
     }
 
     static function destruct_Controller($id){
@@ -37,6 +37,6 @@ class Conference_controller{
 
         }
 
-        require("Views/supprimer.php");
+        require_once("Views/supprimer.php");
     }
 }

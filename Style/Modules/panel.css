@@ -10,3 +10,8 @@
 .panel-option-list{
     margin: 2rem 0;
 }
+
+.panel-login-groupe{
+    position: absolute;
+    bottom: 2rem;
+}

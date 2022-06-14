@@ -12,8 +12,8 @@ class Connection{
 	function __construct(){
 		$this->host = '127.0.0.1';
 		$this->dbname = 'Conference';
-		$this->username = 'root';
-		$this->password = 'password';
+		$this->username = 'tiffane';
+		$this->password = 'Anlyou4545';
 
 		$dsn = "mysql:host=$this->host;dbname=$this->dbname";
 

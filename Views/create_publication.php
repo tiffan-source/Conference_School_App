@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="Style/Modules/input.css">
     <link rel="stylesheet" href="Style/Modules/button.css">
     <link rel="stylesheet" href="Style/Layouts/create_publication.layout.css">
+    <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
+    <link rel="stylesheet" href="Style/Modules/panel.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -32,19 +35,6 @@
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Id de la conference</label>
                     <select name="id_selected" id="id_selected">
-                        <?php
-                            
-                            include("../Models/conference.php");
-                            
-                            $conf = new conference(1);
-                            
-                            $tab = $conf->getAllId();
-
-                            foreach ($tab as $x => $x_value){
-                                echo "<option value = ".$x.">"."#"."$x"."    ".$x_value."</option>";
-                            }
-                            
-                        ?>
  
                     </select>
                 </div>
