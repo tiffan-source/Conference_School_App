@@ -36,8 +36,7 @@
 		 */
 		
 		public function createConference(){
-			$new_connection = new Connection();
-			
+
 			$query = "INSERT INTO conference (nom_conf, description) VALUES (?, ?);";
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
@@ -58,9 +57,7 @@
 
 			return $result;
 		}
-	
-		public function updateConference(array $optionToModify){
-			$new_connection = new Connection();
+
 
 			$sentenceSet = "";
 			$valueTab = [];
