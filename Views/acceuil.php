@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="Style/Modules/links.css">
     <link rel="stylesheet" href="Style/Modules/acceuil.css">
     <link rel="stylesheet" href="Style/Layouts/acceuil.layouts.css">
+    <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
+    <link rel="stylesheet" href="Style/Modules/panel.css">
 
     <title>Document</title>
 </head>

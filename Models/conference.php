@@ -2,9 +2,9 @@
 	require("Connection.php");
 
 	class Conference{
-		private $id_conf;
-		private $nom_conference;
-		private $description;
+		public $id_conf;
+		public $nom_conference;
+		public $description;
 		
 		public function __construct($id_conf = null, $nom_conference = null, $description = null){
 			$this->id_conf = $id_conf;
