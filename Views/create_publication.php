@@ -28,22 +28,24 @@
 
             <form method="post" action="../Controllers/action_create_publication.php" class="create-publication-form">
                 <div class="create-publication-groupefield">
-                    <label class="create-publication-label" for="name_publication">Nom de la publication</label>
-                    <input name = "nom_pub" type="text" id="name_publication" class="input">
-                </div>
-
-                <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Id de la conference</label>
                     <select name="id_selected" id="id_selected">
  
                     </select>
                 </div>
+            
+                <div class="create-publication-groupefield">
+                    <label class="create-publication-label" for="name_publication">Nom de la publication</label>
+                    <input name = "nom_pub" type="text" id="name_publication" class="input">
+                </div>
 
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="content_publication">Contenue de la publication</label>
-                    <textarea class="text-area" name="content_pub" id="" cols="30" rows="10"></textarea>
+                    <textarea class="text-area" name="content_pub" id="" cols="10" rows="10"></textarea>
                 </div>
-                <input type = "submit" class ="button button-create" value = "Créer">
+                <div class="create-publication-submit">
+                    <input type = "submit" class ="button button-create" value = "Créer">
+                </div>
             </form>
         </div>
     </div>
