@@ -26,9 +26,9 @@
                 Manager de publication
             </h1>
 
-            <form method="post" action="../Controllers/action_create_publication.php" class="create-publication-form">
+            <form method="post" action="index.php?action=create_publication" class="create-publication-form">
                 <div class="create-publication-groupefield">
-                    <label class="create-publication-label" for="name_publication">Id de la conference</label>
+                    <label class="create-publication-label" for="name_publication">Conference</label>
                     <select name="id_selected" id="id_selected">
  
                     </select>

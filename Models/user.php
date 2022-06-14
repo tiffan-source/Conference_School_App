@@ -34,8 +34,6 @@
             $preparedStatement->execute([$username]);
 			$user=$preparedStatement->fetchAll();
 
-			var_dump($user[0]);
-
 			if ($user[0] && $user[0]['password']==$password  )
 				return $user[0]['id'];
 			
