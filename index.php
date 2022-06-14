@@ -10,6 +10,7 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             break;
 
         case "detruire_conference":
+            Conference_controller::destruct_Controller();
             break;
     }
     

@@ -26,6 +26,8 @@ class Conference_controller{
     }
 
     static function destruct_Controller(){
+        $data = Conference::getAllConference();
 
+        require("Views/supprimer.php");
     }
 }

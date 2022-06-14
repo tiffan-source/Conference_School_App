@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="Style/Modules/links.css">
     <link rel="stylesheet" href="Style/Modules/title.css">
     <link rel="stylesheet" href="Style/Layouts/supprimer.layouts.css">
-
     <link rel="stylesheet" href="Style/Modules/button.css">
-     <link rel="stylesheet" href="Style/Modules/supprimer.css">
+    <link rel="stylesheet" href="Style/Modules/supprimer.css">
+    <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
+    <link rel="stylesheet" href="Style/Modules/panel.css">
 
     <title>delete_conference</title>
 </head>
@@ -23,30 +24,26 @@
 
         <div id="supprimer">
             <h1 class="title-delete">Supprimer une conférence</h1>
-        <?php
-            
-               
-                    include("../Models/conference.php");
-                            
-                    $conf = new conference(1);
-                    
-                    $tab = $conf->getAllId();
-                    foreach ($tab as $x => $x_value){
-                        echo "<div class='delete'>";
         
-                        echo "<div class='delete-information'>";
-
-                        echo "<span class='delete-information-conference'>".$x_value." #$x"."</span> <br>"."<span class='delete-information-modification'>Modifié le 15/06/2022</span>";
-                        echo "</div>";
-                        echo "<button onclick = 'deleteFunction($x)' class ='button button-delete'>Supprimer</button>";
-                        
-                        echo "</div>";
-                    }
-                    
-
+        <?php                                        
+            foreach ($data as $d_conf){
         ?>
-    </div>
+                <div class='delete'>
 
+                <div class='delete-information'>
+
+                    <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
+                    
+                    <span class='delete-information-modification'>Modifié le 15/06/2022</span>
+
+                </div>
+
+                <button class ='button button-delete'>Supprimer</button>
+                
+                </div>
+        <?php } ?>
+    </div>
+<!-- 
     <script>
         function deleteFunction(s){
             alert(s)
@@ -68,6 +65,6 @@
                 //echo $confer->getId();
                 $confer->deleteConference();
             }
-        ?>
+        ?> -->
 </body>
 </html>

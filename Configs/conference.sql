@@ -13,8 +13,8 @@ CREATE TABLE conference (
 	status varchar(50) default "A venir",
 	/* A venir En cours ou Passé */
 	last_modification_date datetime default now(),
-	 d_day datetime,
-	foreign key(creator) references user(id) 
+	d_day datetime,
+	foreign key(creator) references user(id)
 
 /*Ajouter la date ou aura lieu la conference comme champ html*/
 );
