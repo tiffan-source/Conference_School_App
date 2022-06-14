@@ -7,11 +7,7 @@
 		private $id;
 		private $titre;
 		private $contenu;
-		private $id_conf;
-		
-		
-		
-		
+		private $id_conf;	
 		
 		public function __construct()
 		

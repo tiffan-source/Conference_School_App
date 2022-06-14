@@ -1,66 +1,23 @@
 <?php
 	require("Connection.php");
-	
-	class conference{
-	    private $con;
-		private $c;
-		private $id_conf;
-		private $nom_conf;
-		private $description;
-		private $creator;
-		private $status;
-		private $dDay ;
-		
-		
-		
-		
-		
-		public function __construct()
-{
-    $ctp = func_num_args();
-   
-    $args = func_get_args();
-   
-    
-    switch($ctp)
-    {
-        case 2:
-           
-             $this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			//$this->id_conf =$args[0];
-			$this->nom_conf =$args[0];
-			$this->description = $args[1];
-            break;
-        case 1:
-             $this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			echo "Créé !";
-			//echo $args;
 
-			$this->id_conf =$args[0];
-
-			echo "******".$args[0];
-			//echo "trtuy ".$this->id_conf; 
-			/*$this->nom_conf ="";
-			$this->description = "";*/
-           
-            break;
-        
-         default:
-            break;
-    }
-}
-
+	class Conference{
+		public $id_conf;
+		public $nom_conference;
+		public $description;
 		
-		
-		
-		
-
-		
+		public function __construct($id_conf = null, $nom_conference = null, $description = null){
+			$this->id_conf = $id_conf;
+			$this->nom_conference = $nom_conference;
+			$this->description = $description;
+		}
 	    
+		/**
+		 * All Getter
+		 */
+
+		/*
 	   function getId(){
-		    
 			return $this->id_conf;
 		}
 		
@@ -72,147 +29,92 @@
 		function getDescription(){
 			return $this->description;
 		}
+		*/
+
+		/**
+		 * CRUD
+		 */
 		
-	
 		public function createConference(){
-		
-			try{
-				$query = "insert into conference  (nom_conf, description,d_day) values ('$this->nom_conf','$this->description','$this->dDay');";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+
+			$query = "INSERT INTO conference (nom_conf, description) VALUES (?, ?);";
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute([$this->nom_conference, $this->description]);
+
+			return $result;
 		}
 		
-			public function deleteConference(){
-		
-			try{
-				
-				$query = "delete from conference where id_conf =$this->id_conf;";
+		public function deleteConference(){
+			$new_connection = new Connection();
 			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
+			$query = "DELETE FROM conference WHERE id_conf = ?;";
 		
-			public function updateConferenceByName($nom){
-		
-			try{
-				
-				$query = "update conference set nom_conf='$nom' where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
-		
+			$query_prepare = $new_connection->getConnection()->prepare($query);
 
+			$result = $query_prepare->execute([$this->id_conf]);
 
-		
-
-
-		public function updateConferenceByStatus($status){
-		
-			try{
-				
-				$query = "update conference set status='$status' where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+			return $result;
 		}
 
-		public function updateConferenceByDDay($date){
-		
-			try{
-				
-				$query = "update conference set d_day='$date' where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
 
-		public function updateConferenceByLastModificationDate($date){
-		
-			try{
-				
-				$query = "update conference set last_modification_date='$date' where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
+			$sentenceSet = "";
+			$valueTab = [];
+
+			foreach($optionToModify as $key => $value){
+				$sentenceSet .= " $key = ?,";
+				$valueTab[] = $value;
 			}
+
+			$valueTab[] = $this->id_conf;
+
+			$sentenceSet[-1] = " ";
+		
+			$query = 'UPDATE conference SET'.$sentenceSet.' WHERE id_conf = ?;';
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute($valueTab);
+
+			return $result;
 		}
 		
+		static public function getAllConference(){
+			$new_connection = new Connection();
 
+			$query = "SELECT * FROM conference";
 
-		
-		
+			$data_all_conference = $new_connection->getConnection()->query($query);
 
+			$tab_conference = [];
 
-		
-		public function getAllId(){
-			$this->con = new Connection();
-			$this->c = $this->con->getConnection();
+			while($data = $data_all_conference->fetch()){
+				$conference_item = new Conference();
 
-			$query = "select id_conf, nom_conf from conference";
-			
-			$tab = array();
-			$r = $this->c->query ($query);
-			
-			while($donnees = $r->fetch()){
-				$i = $donnees["id_conf"];
-				$nom = $donnees["nom_conf"];
-				$tab[$i] = $nom;
+				$conference_item->id_conf = $data['id_conf'];
+				$conference_item->nom_conference = $data['nom_conf'];
+				$conference_item->description = $data['description'];
+
+				$tab_conference[] = $conference_item;
 			}
-			return $tab;
 
+			return $tab_conference;
 		}
 		
-		
-		public function updateConferenceByDescription($desc){
-		
-			try{
-				$query = "update conference set description='$desc' where id_conf =$this->id_conf;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+		static public function getConference($id){
+			$new_connection = new Connection();
+
+			$query = "SELECT * FROM conference WHERE id_conf = ?";
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$testQuery = $query_prepare->execute([$id]);
+
+			$data = $query_prepare->fetchAll();
+
+			return $data[0];
 		}
 		
-		
-			public function readConference(){
-		
-			try{
-				
-				$query = "select nom_conf,description  from conference where id_conf =$this->id_conf;";
-			
-				$r = $this->c->query ($query);
-				
-				if ($donnees = $r->fetch())
-				 return "Nom de la conférence : ". $donnees['nom_conf'].'<br/>'. 
-				       "Description : ". $donnees['description'];
-				       return "yeah";
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
-		}
 		
 	}
-
-?>

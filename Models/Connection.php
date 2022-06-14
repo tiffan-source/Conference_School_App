@@ -3,27 +3,25 @@
 class Connection{
 
 	private $connexion;
+	
+	private $host;
+	private $dbname;
+	private $username;
+	private $password;
 
 	function __construct(){
-	
-	$host = 'localhost';
-	$dbname = 'Conference';
-	$username = 'root';
-	$password = '';
+		$this->host = '127.0.0.1';
+		$this->dbname = 'Conference';
+		$this->username = 'tiffane';
+		$this->password = 'Anlyou4545';
 
-	$dsn = "mysql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
-		try{
-			$this->connexion = new PDO($dsn);
-			//echo "Réussi !";
-		} catch (PDOException $e){
-		echo $e->getMessage();
-		}
+		$dsn = "mysql:host=$this->host;dbname=$this->dbname";
+
+		$this->connexion = new PDO($dsn, $this->username, $this->password);
 	}
 	
 	function getConnection(){
 		return $this->connexion;
 	}
-
 }
-
 ?>

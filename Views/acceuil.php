@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="Style/Modules/links.css">
     <link rel="stylesheet" href="Style/Modules/acceuil.css">
     <link rel="stylesheet" href="Style/Layouts/acceuil.layouts.css">
+    <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
+    <link rel="stylesheet" href="Style/Modules/panel.css">
 
     <title>Document</title>
 </head>
@@ -25,42 +27,20 @@
             </div>
             <div class="acceuil-conference">
                 <ul class="acceuil-list-conference">
+
+                    <?php foreach($data as $d_conf){ ?>
+
                     <li  class="acceuil-list-conference-element">
                         <div class="acceuil-list-conference-title">
-                            <span class="acceuil-list-conference-name">Conference #1</span>
+                            <span class="acceuil-list-conference-name"><?= $d_conf->nom_conference ?></span>
                             <span class="acceuil-list-conference-lastupdate">Last update date</span>
                         </div>
                         <span class="acceuil-list-conference-status">Status</span>
                         <span class="acceuil-list-conference-creator">Creator</span>
                         <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
                     </li>
-                    <li  class="acceuil-list-conference-element">
-                        <div class="acceuil-list-conference-title">
-                            <span class="acceuil-list-conference-name">Conference #1</span>
-                            <span class="acceuil-list-conference-lastupdate">Last update date</span>
-                        </div>
-                        <span class="acceuil-list-conference-status">Status</span>
-                        <span class="acceuil-list-conference-creator">Creator</span>
-                        <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
-                    </li>
-                    <li  class="acceuil-list-conference-element">
-                        <div class="acceuil-list-conference-title">
-                            <span class="acceuil-list-conference-name">Conference #1</span>
-                            <span class="acceuil-list-conference-lastupdate">Last update date</span>
-                        </div>
-                        <span class="acceuil-list-conference-status">Status</span>
-                        <span class="acceuil-list-conference-creator">Creator</span>
-                        <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
-                    </li>
-                    <li  class="acceuil-list-conference-element">
-                        <div class="acceuil-list-conference-title">
-                            <span class="acceuil-list-conference-name">Conference #1</span>
-                            <span class="acceuil-list-conference-lastupdate">Last update date</span>
-                        </div>
-                        <span class="acceuil-list-conference-status">Status</span>
-                        <span class="acceuil-list-conference-creator">Creator</span>
-                        <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
-                    </li>
+
+                    <?php } ?>
                 </ul>
             </div>
         </div>
