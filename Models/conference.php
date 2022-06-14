@@ -7,6 +7,9 @@
 		private $id_conf;
 		private $nom_conf;
 		private $description;
+		private $creator;
+		private $status;
+		private $dDay ;
 		
 		
 		
@@ -74,7 +77,7 @@
 		public function createConference(){
 		
 			try{
-				$query = "insert into conference  (nom_conf, description) values ('$this->nom_conf','$this->description');";
+				$query = "insert into conference  (nom_conf, description,d_day) values ('$this->nom_conf','$this->description','$this->dDay');";
 			
 				$r = $this->c->exec ($query);
 				
@@ -108,6 +111,57 @@
 				$e->getMessage();
 			}
 		}
+		
+
+
+		
+
+
+		public function updateConferenceByStatus($status){
+		
+			try{
+				
+				$query = "update conference set status='$status' where id_conf =$this->id_conf;";
+			
+				$r = $this->c->exec ($query);
+				
+			} catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
+
+		public function updateConferenceByDDay($date){
+		
+			try{
+				
+				$query = "update conference set d_day='$date' where id_conf =$this->id_conf;";
+			
+				$r = $this->c->exec ($query);
+				
+			} catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
+
+		public function updateConferenceByLastModificationDate($date){
+		
+			try{
+				
+				$query = "update conference set last_modification_date='$date' where id_conf =$this->id_conf;";
+			
+				$r = $this->c->exec ($query);
+				
+			} catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
+		
+
+
+		
+		
+
+
 		
 		public function getAllId(){
 			$this->con = new Connection();
