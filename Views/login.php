@@ -24,12 +24,12 @@
 
             <div class="login-box-input">
                 <label class="login-box-input-label" for="user">Nom d'utilisateur</label>
-                <input class="input" type="text" id="user">
+                <input class="input" type="text" id="user" name="user">
             </div>
 
             <div class="login-box-input">
                 <label class="login-box-input-label" for="password">Mot de passe</label>
-                <input class="input" type="password" id="password">
+                <input class="input" type="password" id="password" name="password">
             </div>
 
             <div>
