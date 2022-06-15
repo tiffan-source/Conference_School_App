@@ -2,7 +2,7 @@
 	require_once("Connection.php");
 	
 	class Appel {
-	   
+	    
 		private $id_appel;
 		private $sujet_appel;
 
