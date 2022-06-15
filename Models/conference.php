@@ -5,11 +5,15 @@
 		public $id_conf;
 		public $nom_conference;
 		public $description;
-		
-		public function __construct($id_conf = null, $nom_conference = null, $description = null){
+		public $status;
+		public $d_day;
+
+
+		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null){
 			$this->id_conf = $id_conf;
 			$this->nom_conference = $nom_conference;
 			$this->description = $description;
+			$this->d_day = $d_day;
 		}
 	    
 		/**
@@ -35,14 +39,14 @@
 		 * CRUD
 		 */
 		
-		public function createConference(){
+		public function createConference($id_creator){
 			$new_connection = new Connection();
 
-			$query = "INSERT INTO conference (nom_conf, description) VALUES (?, ?);";
+			$query = "INSERT INTO conference (nom_conf, description, d_day, creator) VALUES (?, ?, ?, ?);";
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$this->nom_conference, $this->description]);
+			$result = $query_prepare->execute([$this->nom_conference, $this->description, $this->d_day, $id_creator]);
 
 			return $result;
 		}
@@ -98,6 +102,8 @@
 				$conference_item->id_conf = $data['id_conf'];
 				$conference_item->nom_conference = $data['nom_conf'];
 				$conference_item->description = $data['description'];
+				$conference_item->status = $data['status'];
+				// $conference_item->creator =  $data['creator'];
 
 				$tab_conference[] = $conference_item;
 			}
@@ -116,7 +122,7 @@
 
 			$data = $query_prepare->fetchAll();
 
-			$conf = new Conference($data[0]["id_conf"], $data[0]["nom_conf"], $data[0]["description"]);
+			$conf = new Conference($data[0]["id_conf"], $data[0]["nom_conf"], $data[0]["description"], $data[0]["d_day"]);
 
 			return $conf;
 		}
