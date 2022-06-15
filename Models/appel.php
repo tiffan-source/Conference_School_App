@@ -1,127 +1,99 @@
 <?php
 	require_once("Connection.php");
 	
-	class appel {
-	    private  $con;
-		private $c;
-		private $id;
-		private $sujet;
-		private $id_conf;
+	class Appel {
+	   
+		private $id_appel;
+		private $sujet_appel;
 
-		public function __construct()
-		{
-  
-    echo 'Hello';
-    $ctp = func_num_args();
-   
-    $args = func_get_args();
-   
-    echo $ctp;
-    
-    switch($ctp)
-    {
-        case 2:
-           
-        	$this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			//$this->id=$args[0];
-			$this->sujet =$args[0];
-			$this->id_conf =$args[1];
-            break;
-         case 1:
-                       
-                       $this->con = new Connection();
-			$this->c = $this->con->getConnection();
-			$this->id=$args[0];
-			$this->sujet ="";
-			$this->id_conf =0;
-            break;
-        
-         default:
-            break;
-    }
-}
+		public function __construct($id_appel = null, $sujet_appel = null){
+			$this->id_appel = $id_appel;
+			$this->sujet_appel = $sujet_appel;
+	    }
 
-		
-		
-		
-		
-		 function getId(){
-			return $this->id;
+		//LES GETTERS
+		public function getIdAppel(){
+			return $this->id_appel;
 		}
 		
-		
-	    
-	   function getIdConf(){
-			return $this->id_conf;
+		public function getSujetAppel(){
+			return $this->sujet_appel;
 		}
-		
-		function getSujet(){
-			return $this->sujet;
-		}
-		
-		
-		
-	
-		public function createAppel(){
-		echo 'Yeah';
-		
-			try{
-			$query = "insert into appel  values ($this->id,'$this->sujet',$this->id_conf);";
-			echo $query;
+
+		public function createAppel($id_conference){
+			$new_connection = new Connection();
+
+			$query = "INSERT INTO appel (id_conf_conference, sujet) VALUES (?, ?);";
 			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute([$id_conference, $this->sujet_appel]);
+
+			return $result;
 		}
 		
-			public function deleteAppel(){
-		
-			try{
-				
-				$query = "delete from appel where id_appel =$this->id;";
+		public function deleteAppel(){
+			$new_connection = new Connection();
 			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+			$query = "DELETE FROM appel WHERE id_appel = ?;";
+		
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute([$this->id_appel]);
+
+			return $result;
 		}
 		
-			public function updateAppel($sujet){
-		
-			try{
-				
-				$query = "update appel set sujet='$sujet' where id_appel =$this->id;";
-			
-				$r = $this->c->exec ($query);
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
-			}
+		public function updateAppel($sujet){
+			$new_connection = new Connection();
+
+			$query = "UPDATE appel SET sujet='$sujet' WHERE id_appel = ?;";
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$result = $query_prepare->execute($this->id_appel);
+
+			return $result;
 		}
 		
-			public function readAppel(){
-		
-			try{
-				
-				$query = "select *  from appel where id_appel =$this->id;";
-			
-				$r = $this->c->query ($query);
-				
-				if ($donnees = $r->fetch())
-				 return "Sujet de l'appel : ". $donnees['sujet'].'<br/>'. 
-				       "Id de la conférence : ". $donnees['id_conf_conference'];
-				      
-				       
-				
-			} catch (PDOException $e) {
-				$e->getMessage();
+		static public function readAllAppel(){
+			$new_connection = new Connection();
+
+			$query = "SELECT * FROM appel";
+
+			$data_all_appel = $new_connection->getConnection()->query($query);
+
+			$tab_appel = [];
+
+			while($data = $data_all_appel->fetch()){
+				$appel_item = new Appel();
+
+				$appel_item->id_appel = $data['id_appel'];
+				$appel_item->sujet_appel = $data['sujet'];
+
+				$tab_appel[] = $appel_item;
 			}
+			return $tab_publication;
 		}
-		
+
+		static public function getAppel($id){
+			$new_connection = new Connection();
+
+			$query = "SELECT * FROM appel WHERE id_appel = ?";
+
+			$query_prepare = $new_connection->getConnection()->prepare($query);
+
+			$testQuery = $query_prepare->execute([$id]);
+
+			if($testQuery){
+				$data = $query_prepare->fetchAll();
+
+				$appel = new Appel($data[0]["id_appel"], $data[0]["sujet"]);
+
+				return $publication;
+			}
+			return null;
+		}
 	}
-
+	
 ?>
