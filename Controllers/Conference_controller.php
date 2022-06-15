@@ -1,5 +1,6 @@
 <?php
 require_once("Models/conference.php");
+require_once("Controllers/User_controller.php");
 
 class Conference_controller{
     static function acceuil_Controller(){
