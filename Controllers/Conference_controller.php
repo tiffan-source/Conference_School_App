@@ -10,7 +10,7 @@ class Conference_controller{
     }
 
     static function create_Controller(){
-
+        $error = "";
         /**
          * Faire le controlle du POST
          * 
@@ -20,7 +20,14 @@ class Conference_controller{
         if ($_POST){
             $conference_name = $_POST['nom_conference'];
             $conference_desc = $_POST['desc_conference'];
-            ( new Conference(null, $conference_name, $conference_desc) )->createConference();
+            $date_conference = $_POST['date_conference'];
+
+            $id_who = User_controller::checkLog();
+
+            if($id_who)
+                ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($id_who);
+            else
+                $error = "You must connect";
         }
 
         require_once("Views/create_conference.php");

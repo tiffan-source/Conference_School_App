@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="Style/Layouts/create_conference.layout.css">
     <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
     <link rel="stylesheet" href="Style/Modules/panel.css">
+    <link rel="stylesheet" href="Style/Modules/alert.css">
 
     <title>create_conference</title>
 </head>
@@ -34,7 +35,16 @@
                     <label class="create-conference-label" for="content_conference">Description de la conférence</label>
                     <textarea class="text-area" name="desc_conference" id="" cols="30" rows="10"></textarea>
                 </div>
-                <input type = "submit" class ="button button-create" value = "Créer">
+                <div class="create-conference-groupefield">
+                    <label class="create-conference-label" for="date_conference">Date de la conference</label>
+                    <input type="date" id="date_conference" class="input" name = "date_conference">
+                </div>
+                <div class="create-conference-groupefield-submit">
+                    <input type = "submit" class ="button button-create" value = "Créer">
+                    <?php if($error) {?>
+                    <p class="alert-create-conference"> <?= $error ?></p>
+                    <?php }?>
+                </div>
             </form>
             
         </div>

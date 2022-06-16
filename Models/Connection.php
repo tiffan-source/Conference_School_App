@@ -1,5 +1,10 @@
 <?php
 
+require("vendor/autoload.php");
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../Configs');
+$dotenv->load();
+
 class Connection{
 
 	private $connexion;
@@ -10,10 +15,10 @@ class Connection{
 	private $password;
 
 	function __construct(){
-		$this->host = '127.0.0.1';
-		$this->dbname = 'Conference';
-		$this->username = 'root';
-		$this->password = '';
+		$this->host = $_ENV['USER_HOST'];
+		$this->dbname = $_ENV['USER_DBNAME'];
+		$this->username = $_ENV['USER_USERNAME'];
+		$this->password = $_ENV['USER_PWD'];
 
 		$dsn = "mysql:host=$this->host;dbname=$this->dbname";
 

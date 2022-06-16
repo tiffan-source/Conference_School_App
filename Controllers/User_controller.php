@@ -33,7 +33,7 @@ class User_controller{
 
     static public function checkLog(){
         if ($_COOKIE["authCheck"]) {
-            var_dump($_COOKIE["authCheck"]);
+            // var_dump($_COOKIE["authCheck"]);
 
             $id_decoded = JWT::decode($_COOKIE["authCheck"], new Key($_ENV['USER_KEY'], 'HS256'));
 
