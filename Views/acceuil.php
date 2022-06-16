@@ -34,10 +34,10 @@
                     <li  class="acceuil-list-conference-element">
                         <div class="acceuil-list-conference-title">
                             <span class="acceuil-list-conference-name"><?= $d_conf->nom_conference ?></span>
-                            <span class="acceuil-list-conference-lastupdate">Last update date</span>
+                            <span class="acceuil-list-conference-lastupdate"><?= $d_conf->d_day?></span>
                         </div>
-                        <span class="acceuil-list-conference-status">Status</span>
-                        <span class="acceuil-list-conference-creator">Creator</span>
+                        <span class="acceuil-list-conference-status"><?=  $d_conf->status?></span>
+                        <span class="acceuil-list-conference-creator"><?=  $d_conf->creator ?></span>
                         <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
                     </li>
 
