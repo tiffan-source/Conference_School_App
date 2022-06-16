@@ -7,6 +7,7 @@
 		public $description;
 		public $status;
 		public $d_day;
+		public $creator;
 
 
 		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null){
@@ -103,7 +104,8 @@
 				$conference_item->nom_conference = $data['nom_conf'];
 				$conference_item->description = $data['description'];
 				$conference_item->status = $data['status'];
-				// $conference_item->creator =  $data['creator'];
+				$conference_item->creator =  $data['creator'];
+				$conference_item->d_day =  $data['d_day'];
 
 				$tab_conference[] = $conference_item;
 			}
