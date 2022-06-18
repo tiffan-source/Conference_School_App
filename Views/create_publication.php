@@ -46,8 +46,8 @@
 
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="content_publication">Contenue de la publication</label>
-                    <textarea class="text-area" name="content_pub" id="" cols="10" rows="8"></textarea>
-                    <span class="error"> <?php echo $pub_Content_Err = "";;?></span>
+                    <textarea class="text-area" name="content_pub" id="" cols="10" rows="7"></textarea>
+                    <span class="error"> <?php echo $pub_Content_Err;?></span>
                 </div>
                 <div class="create-publication-submit">
                     <input type = "submit" class ="button button-create" value = "Créer">
