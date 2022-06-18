@@ -8,13 +8,14 @@
 		public $status;
 		public $d_day;
 		public $creator;
-
+		public $last_modification_date;
 
 		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null){
 			$this->id_conf = $id_conf;
 			$this->nom_conference = $nom_conference;
 			$this->description = $description;
 			$this->d_day = $d_day;
+
 		}
 	    
 		/**
@@ -106,6 +107,7 @@
 				$conference_item->status = $data['status'];
 				$conference_item->creator =  $data['creator'];
 				$conference_item->d_day =  $data['d_day'];
+				$conference_item->last_modification_date = $data['last_modification_date'];
 
 				$tab_conference[] = $conference_item;
 			}
@@ -122,9 +124,9 @@
 
 			$testQuery = $query_prepare->execute([$id]);
 
-			$data = $query_prepare->fetchAll();
+			$data = $query_prepare->fetch(PDO::FETCH_ASSOC);
 
-			$conf = new Conference($data[0]["id_conf"], $data[0]["nom_conf"], $data[0]["description"], $data[0]["d_day"]);
+			$conf = new Conference($data["id_conf"] ?? 'default value', $data["nom_conf"] ?? 'default value', $data["description"] ?? 'default value', $data["d_day"] ?? 'default value');
 
 			return $conf;
 		}

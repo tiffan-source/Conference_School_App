@@ -33,17 +33,17 @@
 
                         <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
 
-                        <span class='delete-information-modification'>Modifié le 15/06/2022</span>
+                        <span class='delete-information-modification'>Modifiée le <?= $d_conf->last_modification_date ?></span>
 
                     </div>
 
                     <button class ='button button-delete'>
-		      <a href=<?='index?action=detruire_conference&id='.$d_conf->id_conf ?> >Supprimer</a>
-		    </button>
+		                <a href=<?="index.php?action=detruire_conference&id_conf=".$d_conf->id_conf ?> >Supprimer</a>
+		            </button>
                     </div>
                 <?php } ?>
 
-            </div>
+        </div>
     </div>
 
 </body>

@@ -22,7 +22,7 @@ class Conference_controller{
             $conference_desc = $_POST['desc_conference'];
             $date_conference = $_POST['date_conference'];
 
-            $id_who = User_controller::checkLog();
+            $id_who = /*User_controller::checkLog()*/ 1;
 
             if($id_who)
                 ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($id_who);
@@ -33,9 +33,9 @@ class Conference_controller{
         require_once("Views/create_conference.php");
     }
 
-    static function destruct_Controller($id){
+    static function destruct_Controller($id = null){
         $data = Conference::getAllConference();
-
+        
         if($id){
             $conf_to_delete = Conference::getConference($id);
 

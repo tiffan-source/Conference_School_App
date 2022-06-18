@@ -8,17 +8,17 @@ $dotenv->load();
 class Connection{
 
 	private $connexion;
-	
 	private $host;
 	private $dbname;
 	private $username;
 	private $password;
 
+	
 	function __construct(){
-		$this->host = $_ENV['USER_HOST'];
-		$this->dbname = $_ENV['USER_DBNAME'];
-		$this->username = $_ENV['USER_USERNAME'];
-		$this->password = $_ENV['USER_PWD'];
+		$this->host = "localhost";
+		$this->dbname = "Conference";
+		$this->username = "root";
+		$this->password = "";
 
 		$dsn = "mysql:host=$this->host;dbname=$this->dbname";
 

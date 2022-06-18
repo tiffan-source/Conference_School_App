@@ -30,18 +30,24 @@
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Conference</label>
                     <select name="id_selected" id="id_selected">
- 
+                        <option value="empty"></option>
+                        <?php foreach ($data as $d_conf){ ?>
+                                <option value = <?= $d_conf->id_conf?>><?=$d_conf->nom_conference." #".$d_conf->id_conf ?></option>
+                        <?php }?>
                     </select>
+                    <span class="error" style = "color : red;"> <?php echo $conf_Id_Err;?></span>
                 </div>
             
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Nom de la publication</label>
                     <input name = "nom_pub" type="text" id="name_publication" class="input">
+                    <span class="error"> <?php echo $pub_Title_Err ;?></span>
                 </div>
 
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="content_publication">Contenue de la publication</label>
-                    <textarea class="text-area" name="content_pub" id="" cols="10" rows="10"></textarea>
+                    <textarea class="text-area" name="content_pub" id="" cols="10" rows="8"></textarea>
+                    <span class="error"> <?php echo $pub_Content_Err = "";;?></span>
                 </div>
                 <div class="create-publication-submit">
                     <input type = "submit" class ="button button-create" value = "Créer">
