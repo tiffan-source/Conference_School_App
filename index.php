@@ -23,9 +23,6 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             Publication_controller::create_publication_controller();
             break;
         
-        case "create_":
-            Publication_controller::create_publication_controller();
-            break;
         
     }
 }else{

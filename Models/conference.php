@@ -48,6 +48,7 @@
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
+
 			$result = $query_prepare->execute([$this->nom_conference, $this->description, $this->d_day, $id_creator]);
 
 			return $result;

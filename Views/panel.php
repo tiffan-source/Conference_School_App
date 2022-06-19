@@ -12,7 +12,7 @@
         <h3 class="panel-title">Parametrage</h3>
         <ul>
             <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_publication">Ajouter des activites</a></li>
-            <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_publication">Toutes les conferences</a></li>
+            <li class="panel-option-list"><a class="panel-link" href="index.php">Toutes les conferences</a></li>
             <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_publication">Ajouter des publications</a></li>
         </ul>
     </div>

@@ -16,11 +16,11 @@ class Publication_controller{
             $publication_content= $_POST['content_pub'];
 
             if (empty($conference_id) || $conference_id == "empty") {
-                $conf_Id_Err = "*You must have selected a conference ";
+                $conf_Id_Err = "*You must have selected a conference !";
             }else if(empty($publication_name)){
-                $pub_Title_Err   = "*You must have mentionned a publication name";
+                $pub_Title_Err   = "*You must have mentionned a publication name !";
             }else if(empty($publication_content)){
-                $pub_Content_Err = "*You must have mentionned the publication content";
+                $pub_Content_Err = "*You must have mentionned the publication content !";
             }else{
                 ( new Publication(null, $publication_name,$publication_content) )->createPublication($conference_id);
             }

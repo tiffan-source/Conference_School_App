@@ -11,23 +11,44 @@ class Conference_controller{
 
     static function create_Controller(){
         $error = "";
-        /**
-         * Faire le controlle du POST
-         * 
-         * 
-         */
-
-        if ($_POST){
+        
+        $data = Conference::getAllConference();
+        
+        $conf_Name_Err = "";
+        $conf_Desc_Err = "";
+        $conf_Date_Err = "";
+        
+        if ($_POST) {
+            
             $conference_name = $_POST['nom_conference'];
             $conference_desc = $_POST['desc_conference'];
             $date_conference = $_POST['date_conference'];
+            
 
-            $id_who = /*User_controller::checkLog()*/ 1;
+            if (empty($conference_name)) {
+                $conf_Name_Err = "*You must have mentionned a conference name !";
+            }else if(empty($conference_desc)){
+                $conf_Desc_Err   = "*You must have mentionned the conference description !";
+            }else if(empty($date_conference)){
+                $conf_Date_Err = "*You must have mentionned the conference d-day !";
+            }else{
 
-            if($id_who)
-                ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($id_who);
-            else
-                $error = "You must connect";
+                $id_who = /*User_controller::checkLog()*/ 1;
+                
+                //inserting_data
+
+                if($id_who)
+                    ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($id_who);
+                
+                    else
+                    $error = "You must connect";
+                     
+                     
+            }
+
+            
+
+            
         }
 
         require_once("Views/create_conference.php");
