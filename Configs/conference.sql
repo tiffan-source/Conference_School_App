@@ -18,13 +18,11 @@ CREATE TABLE conference (
 /*Ajouter la date ou aura lieu la conference comme champ html*/
 );
 
-CREATE TABLE participant (
+CREATE TABLE participant(
 	id_participant integer NOT NULL  primary key AUTO_INCREMENT,
 	nom_participant varchar(50) NOT NULL,
 	id_conf_conference integer,
 	foreign key (id_conf_conference) references conference(id_conf)
-
-
 
 );
 
@@ -35,10 +33,7 @@ CREATE TABLE activite (
 	id_conf_conference integer,
 	foreign key (id_conf_conference) references conference(id_conf)
 	
-
 );
-
-
 
 CREATE TABLE appel (
 	id_appel integer NOT NULL primary key AUTO_INCREMENT,
@@ -47,7 +42,7 @@ CREATE TABLE appel (
 	foreign key (id_conf_conference) references conference(id_conf)
 
 );
--- 
+ 
 CREATE TABLE publication (
 	id_publication integer primary key AUTO_INCREMENT,
 	titre varchar(50) NOT NULL,
