@@ -1,2 +1,4 @@
 /vendor/
 /Configs/.env
+/Conference_generetor/.env
+/Conference_generetor/vendor/
