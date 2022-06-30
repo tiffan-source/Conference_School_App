@@ -16,13 +16,13 @@
     <link rel="stylesheet" href="Style/Modules/button.css">
     
     
-    <script>
+    <!-- <script>
         function myFunction() {
             var x = document.getElementById("search");
             x.value = x.value.toUpperCase();
             
         }
-    </script>
+    </script> -->
 
 
     <title>Document</title>
@@ -39,7 +39,7 @@
             </div>
             <div class="acceuil-conference">
                 <ul class="acceuil-list-conference">
-                   
+<!--                    
                     <li  class="acceuil-list-conference-element">
                         <div class="acceuil-list-conference-title">
                             <span class="acceuil-list-conference-name">Conferences</span>
@@ -48,7 +48,7 @@
                         <span class="acceuil-list-conference-status" style = "text-align : center;">Status</span>
                         <span class="acceuil-list-conference-creator" style = "text-align : center;">ID Creator</span>
                         <a href="#" class="acceuil-list-conference-showmore"></a>
-                    </li>
+                    </li> -->
                     <?php foreach($data as $d_conf){ ?>
 
                     <li  class="acceuil-list-conference-element">

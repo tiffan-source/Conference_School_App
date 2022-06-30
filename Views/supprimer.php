@@ -43,6 +43,11 @@
                     </div>
                 <?php } ?>
 
+                <div>
+                    <?php if(isset($error) && !empty($error)) {?>
+                    <span class="error"> *<?= $error ?> </span>
+                    <?php }?>
+                </div>
         </div>
     </div>
 

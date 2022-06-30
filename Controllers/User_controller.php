@@ -11,24 +11,34 @@ use Firebase\JWT\Key;
 
 class User_controller{
     static public function login_Controller(){
-        
+        $check_connection = User_controller::checkLog();
+        $error = "";
+
         if($_POST){
-            $user_check = User::checkUser($_POST['user'], $_POST['password']);
+            if(empty($_POST['user']) == true || empty($_POST['password']) == true ){
+                $error = "Certains champs ne sont pas remplis";
+                require("Views/login.php");
+                return;
+            }
+            $user = $_POST['user'];
+            $pass = $_POST['password'];
 
-            if($user_check){
+            $user_id = User::checkUser($user, $pass);
 
+            if($user_id){
                 $key = $_ENV['USER_KEY'];
 
-                $jwt = JWT::encode([$user_check], $key, 'HS256');
+                $jwt = JWT::encode([$user_id], $key, 'HS256');
 
                 setcookie("authCheck", $jwt, time()+60 * 30);
-             
-                require_once("Views/acceuil.php");
+                header("Location: index.php");
             }else{
-                $error_connection = "username ou mot de passe incorrect";
+                $error = "No user found";
+                require("Views/login.php");
+                return;                
             }
-        }else        
-            require_once("Views/login.php");
+        }
+        require("Views/login.php");
     }
 
     static public function checkLog(){

@@ -15,10 +15,10 @@ class Connection{
 
 	
 	function __construct(){
-		$this->host = "localhost";
-		$this->dbname = "Conference";
-		$this->username = "root";
-		$this->password = "";
+		$this->host = $_ENV["USER_HOST"];
+		$this->dbname = $_ENV["USER_DBNAME"];
+		$this->username = $_ENV["USER_USERNAME"];
+		$this->password = $_ENV["USER_PWD"];
 
 		$dsn = "mysql:host=$this->host;dbname=$this->dbname";
 

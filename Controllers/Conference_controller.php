@@ -3,14 +3,17 @@ require_once("Models/conference.php");
 require_once("Controllers/User_controller.php");
 
 class Conference_controller{
+
     static function acceuil_Controller(){
         $data = Conference::getAllConference();
-        
+        $check_connection = User_controller::checkLog();
+
         require_once("Views/acceuil.php");
     }
 
     static function create_Controller(){
         $error = "";
+        $check_connection = User_controller::checkLog();
         
         $data = Conference::getAllConference();
         
@@ -32,22 +35,12 @@ class Conference_controller{
             }else if(empty($date_conference)){
                 $conf_Date_Err = "*You must have mentionned the conference d-day !";
             }else{
-
-                $id_who = /*User_controller::checkLog()*/ 1;
-                
-                //inserting_data
-
-                if($id_who)
-                    ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($id_who);
-                
-                    else
-                    $error = "You must connect";
-                     
-                     
+                // var_dump($check_connection);
+                if($check_connection != false)
+                    ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($check_connection);
+                else
+                    $error = "You must connect";           
             }
-
-            
-
             
         }
 
@@ -56,15 +49,18 @@ class Conference_controller{
 
     static function destruct_Controller($id = null){
         $data = Conference::getAllConference();
-        
-        if($id){
-            $conf_to_delete = Conference::getConference($id);
-
-            $conf_to_delete->deleteConference();
-
-            $data = Conference::getAllConference();
-
-        }
+        $check_connection = User_controller::checkLog();
+        $error = "";
+         
+            if($id){
+                if ($check_connection==false){
+                    $error = "Vous n'etes pas connecte";
+                }else{
+                    $conf_to_delete = Conference::getConference($id);
+                    $conf_to_delete->deleteConference();
+                    $data = Conference::getAllConference();
+                }
+            }
 
         require_once("Views/supprimer.php");
     }

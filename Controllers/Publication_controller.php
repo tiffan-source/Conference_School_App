@@ -5,6 +5,7 @@ require_once("Models/publication.php");
 
 class Publication_controller{
     static public function create_publication_controller(){
+        $check_connection = User_controller::checkLog();
         $data = Conference::getAllConference();
         $conf_Id_Err = "";
         $pub_Title_Err  = "";
@@ -22,7 +23,10 @@ class Publication_controller{
             }else if(empty($publication_content)){
                 $pub_Content_Err = "*You must have mentionned the publication content !";
             }else{
-                ( new Publication(null, $publication_name,$publication_content) )->createPublication($conference_id);
+                if($check_connection != false)
+                    ( new Publication(null, $publication_name,$publication_content) )->createPublication($conference_id);
+                else
+                    $error = "You must connect";
             }
 
         }
