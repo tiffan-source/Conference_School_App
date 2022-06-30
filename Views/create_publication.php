@@ -50,7 +50,9 @@
                     <span class="error"> <?php echo $pub_Content_Err;?></span>
                 </div>
                 <div class="create-publication-groupefield">
-                    <span class="error"><?=$error?></span>
+                    <?php if (isset($error) && !empty($error)) {?>
+                    <span class="error"><?= $error ?></span>
+                    <?php } ?>
                 </div>
                 <div class="create-publication-submit">
                     <input type = "submit" class ="button button-create" value = "Créer">
