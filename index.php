@@ -5,6 +5,7 @@ require_once("Controllers/User_controller.php");
 require_once("Controllers/Publication_controller.php");
 require_once("Controllers/Activity_controller.php");
 require_once("Controllers/Appel_controller.php");
+require_once("Controllers/participant_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
 
@@ -33,7 +34,17 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             Appel_controller::create_appel_controller();
             break;
         
+        case "gerer_participant":
+            Participant_controller::checker_participant_controller();
+            break;
+        case "rejeter_participant":
+            Participant_controller::rejeter_participant_controller($_GET["id_participant"]);
+            
+        case "valider_participant":
+            Participant_controller::valider_participant_controller($_GET["id_participant"]);
+        
     }
+
 }else{
     Conference_controller::acceuil_Controller();
 }

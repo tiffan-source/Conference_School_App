@@ -5,6 +5,7 @@
 		public $id_conf;
 		public $id_participant;
 		public $nom_participant;
+		public $inscrit;
 		public $prenom_participant;
 		public $email_participant;
 

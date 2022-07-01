@@ -1,0 +1,27 @@
+.participant {
+    box-shadow: 0 0 4px #D8E1E8;
+    border: 1px solid #d5e3ec;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.partcipant-information{
+    display: inline-block;
+    padding-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: #002147;
+}
+
+.partcipant-nom-prenom {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.partcipant-email {
+    display: flex;
+    flex-direction: column;
+}

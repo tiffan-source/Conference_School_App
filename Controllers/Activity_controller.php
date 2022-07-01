@@ -9,7 +9,7 @@
 
             if ($_POST) {
 
-                var_dump($_POST);
+                // var_dump($_POST);
                 
                 $conference_id = $_POST['id_selected'];
 		        $nom_activite = $_POST ['nom_activite'];
@@ -37,4 +37,4 @@
             require_once "Views/create_activity.php";
         }
     }
-?>
+?> 
