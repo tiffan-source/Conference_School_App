@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Appel A Candidature </h1>
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate assumenda minus eius cumque ea, accusamus quibusdam ipsam repellendus! Rem itaque incidunt at mollitia esse, reprehenderit, et cumque officia voluptas voluptatum ad dolores quaerat labore alias amet aperiam totam? Cupiditate iusto sequi deserunt cumque explicabo necessitatibus, porro voluptate ipsam officiis voluptatem minima in dolorem voluptas. Deserunt labore iste cupiditate ad repudiandae deleniti sit. Ut, nam iusto. Rem earum dolorum sit, rerum omnis et, deleniti repellendus animi similique, eius voluptate modi nobis hic sunt.
-    </p>
+    <?php foreach($data as $data_elem) {?>
+        
+        <div>
+            <h1><?php $data["sujet_appel"]?> </h1>
+            <p>
+                <?php $data["contenu"]?>
+            </p>
+        </div>
+    
+    <?php }?>
 </body>
 </html>
