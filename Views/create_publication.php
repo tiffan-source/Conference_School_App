@@ -30,7 +30,7 @@
                 <div class="create-publication-groupefield">
                     <label class="create-publication-label" for="name_publication">Conference</label>
                     <select name="id_selected" id="id_selected">
-                        <option value="empty"></option>
+                        <option va-lue="empty"></option>
                         <?php foreach ($data as $d_conf){ ?>
                                 <option value = <?= $d_conf->id_conf?>><?=$d_conf->nom_conference." #".$d_conf->id_conf ?></option>
                         <?php }?>
