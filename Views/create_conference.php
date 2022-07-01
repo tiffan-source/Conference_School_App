@@ -30,20 +30,34 @@
                 <div class="create-conference-groupefield">
                     <label class="create-conference-label" for="name_conference">Nom de la conférence</label>
                     <input type="text" id="name_conference" class="input" name = "nom_conference">
-                    <span class="error" > <?php echo $conf_Name_Err;?></span>
+                    <span class="error" > <?php echo $error;?></span>
                 </div>
+                
                 <div class="create-conference-groupefield">
-                    <label class="create-conference-label" for="content_conference">Description de la conférence</label>
-                    <textarea class="text-area" name="desc_conference" id="" cols="30" rows="6"></textarea>
-                    <span class="error" > <?php echo $conf_Desc_Err;?></span>
+                    <label for="organisateur_conference" class="create-conference-label">Organisateur de la conference</label>
+                    <input type="text" id="organisateur_conference" class="input" name="organisateur_conference">
+                    <span class="error" > <?php echo $error;?></span>
+
+                </div>
+
+                <div class="create-conference-groupefield">
+                    <label for="lieu_conference" class="create-conference-label">Lieu de la conference</label>
+                    <input type="text" id="lieu_conference" class="input" name="lieu_conference">
+                    <span class="error" > <?php echo $error;?></span>
+
                 </div>
                 <div class="create-conference-groupefield">
                     <label class="create-conference-label" for="date_conference">Date de la conference</label>
                     <input type="date" id="date_conference" class="input" name = "date_conference">
-                    <span class="error"> <?php echo $conf_Date_Err;?></span>
+                    <span class="error"> <?php echo $error;?></span>
                 </div>
                 <div class="create-conference-groupefield">
                     <span class="error"><?= $error ?></span>
+                </div>
+                <div class="create-conference-groupefield">
+                    <label class="create-conference-label" for="content_conference">Description de la conférence</label>
+                    <textarea class="text-area" name="desc_conference" id="" cols="30" rows="6"></textarea>
+                    <span class="error" > <?php echo $error;?></span>
                 </div>
                 <div class="create-conference-groupefield-submit">
                     <input type = "submit" class ="button button-create" value = "Créer">

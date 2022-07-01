@@ -16,28 +16,30 @@ class Conference_controller{
         $check_connection = User_controller::checkLog();
         
         $data = Conference::getAllConference();
-        
-        $conf_Name_Err = "";
-        $conf_Desc_Err = "";
-        $conf_Date_Err = "";
+
         
         if ($_POST) {
             
             $conference_name = $_POST['nom_conference'];
             $conference_desc = $_POST['desc_conference'];
             $date_conference = $_POST['date_conference'];
-            
+            $organisateur = $_POST["organisateur_conference"];
+            $lieu = $_POST["lieu_conference"];
 
             if (empty($conference_name)) {
-                $conf_Name_Err = "*You must have mentionned a conference name !";
+                $error = "*You must have mentionned a conference name !";
             }else if(empty($conference_desc)){
-                $conf_Desc_Err   = "*You must have mentionned the conference description !";
+                $error   = "*You must have mentionned the conference description !";
             }else if(empty($date_conference)){
-                $conf_Date_Err = "*You must have mentionned the conference d-day !";
-            }else{
+                $error = "*You must have mentionned the conference d-day !";
+            }else if(empty($organisateur)){
+                $error = "*You must mention organisateur";
+            }else if(empty($lieu)){
+                $error = "Must mention lieu";
+            } else{
                 // var_dump($check_connection);
                 if($check_connection != false)
-                    ( new Conference(null, $conference_name, $conference_desc, $date_conference) )->createConference($check_connection);
+                    ( new Conference(null, $conference_name, $conference_desc, $date_conference, $organisateur, $lieu) )->createConference($check_connection);
                 else
                     $error = "You must connect";           
             }

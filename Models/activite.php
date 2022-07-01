@@ -5,11 +5,15 @@
 		private $id_activite;
 		private $nom_activite;
 		private $description_activite;
+		public $date;
+		public $type;
 		
-		public function __construct($id_activite = null, $nom_activite = null, $description_activite = null){
+		public function __construct($id_activite = null, $nom_activite = null, $description_activite = null, $date = null, $type = null){
         	$this->id_activite = $id_activite;
 			$this->nom_activite = $nom_activite;
 			$this->description_activite = $description_activite;
+			$this->date = $date;
+			$this->type = $type;
     	}
 
 		// function getIdActivite(){
@@ -27,11 +31,11 @@
 		public function createActivite($id_conference){
 			$new_connection = new Connection();
 
-			$query = "INSERT INTO activite (id_conf_conference, nom_activite, description) VALUES (?, ?, ?);";
+			$query = "INSERT INTO activite (id_conf_conference, nom_activite, description, type, date) VALUES (?, ?, ?, ?, ?);";
 			
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$id_conference, $this->nom_activite, $this->description_activite]);
+			$result = $query_prepare->execute([$id_conference, $this->nom_activite, $this->description_activite, $this->type, $this->date]);
 
 			return $result;
 		}
@@ -87,6 +91,8 @@
 				$activite_item->id_activite = $data['id_activite'];
 				$activite_item->nom_activite = $data['nom_activite'];
 				$activite_item->description_activite = $data['description'];
+				$activite_item->type = $data["type"];
+				$activite_item->date = $data["date"];
 
 				$tab_activite[] = $activite_item;
 			}
@@ -105,7 +111,7 @@
 			if($testQuery){
 				$data = $query_prepare->fetchAll();
 
-				$activite = new Activite($data[0]["id_activite"], $data[0]["nom_activite"], $data[0]["description"]);
+				$activite = new Activite($data[0]["id_activite"], $data[0]["nom_activite"], $data[0]["description"], $data[0]["type"], $data[0]["description"]);
 	
 				return $activite;
 			}

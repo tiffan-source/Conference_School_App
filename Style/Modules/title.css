@@ -17,12 +17,14 @@
     margin-bottom: 2rem;
 }
 
-.create-publication-title{
+.create-publication-title, .create-activity-title{
     font-size: 1.5rem;
     font-weight: bold;
     /* margin-bottom: 3rem; */
     color: #002147;
 }
+
+
 
 .create-conference-title{
     font-size: 1.5rem;
