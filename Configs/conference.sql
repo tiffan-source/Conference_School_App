@@ -13,6 +13,8 @@ CREATE TABLE conference (
 	/* A venir En cours ou Passé */
 	last_modification_date datetime default now(),
 	d_day datetime,
+	organisateurs text NOT NULL,
+	lieu varchar(50),
 	foreign key(creator) references user(id) 
 
 /*Ajouter la date ou aura lieu la conference comme champ html*/
@@ -31,18 +33,21 @@ CREATE TABLE activite (
 	nom_activite varchar(50) NOT NULL,
 	description text NOT NULL,
 	id_conf_conference integer,
+	type varchar(50),
+	date datetime,
 	foreign key (id_conf_conference) references conference(id_conf)
-	
+
 );
 
-CREATE TABLE appel (
+CREATE TABLE appel_a_candidature(
 	id_appel integer NOT NULL primary key AUTO_INCREMENT,
-	sujet varchar(50) NOT NULL,
+	sujet_appel varchar(50) NOT NULL,
+	contenu text,
 	id_conf_conference integer,
 	foreign key (id_conf_conference) references conference(id_conf)
 
 );
- 
+
 CREATE TABLE publication (
 	id_publication integer primary key AUTO_INCREMENT,
 	titre varchar(50) NOT NULL,
