@@ -1,24 +1,19 @@
 <?php
 	require_once("Connection.php");
 
-	class Conference{
+	class Participant{
 		public $id_conf;
-		public $nom_conference;
-		public $description;
-		public $status;
-		public $d_day;
-		public $creator;
-		public $last_modification_date;
-		public $organisateur;
-		public $lieu;
+		public $id_participant;
+		public $nom_participant;
+		public $prenom_participant;
+		public $email_participant;
 
-		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null, $organisateur = null, $lieu = null){
+		public function __construct($id_participant = null, $id_conf = null, $nom_participant = null, $prenom_participant = null, $email_participant = null){
+			$this->id_participant = $id_participant;
 			$this->id_conf = $id_conf;
-			$this->nom_conference = $nom_conference;
-			$this->description = $description;
-			$this->d_day = $d_day;
-			$this->organisateur = $organisateur;
-			$this->lieu = $lieu;
+			$this->nom_participant = $nom_participant;
+			$this->prenom_participant = $prenom_participant;
+			$this->email_participant = $email_participant;
 		}
 	    
 		/**
@@ -44,32 +39,19 @@
 		 * CRUD
 		 */
 		
-		public function createConference($id_creator){
-			$new_connection = new Connection();
-
-			$query = "INSERT INTO conference (nom_conf, description, d_day, creator, organisateurs, lieu) VALUES (?, ?, ?, ?, ?, ?);";
-
-			$query_prepare = $new_connection->getConnection()->prepare($query);
-
-
-			$result = $query_prepare->execute([$this->nom_conference, $this->description, $this->d_day, $id_creator, $this->organisateur, $this->lieu]);
-
-			return $result;
-		}
-		
-		public function deleteConference(){
+		public function deleteParticpant(){
 			$new_connection = new Connection();
 			
-			$query = "DELETE FROM conference WHERE id_conf = ?;";
+			$query = "DELETE FROM participant WHERE id_participant = ?;";
 		
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$this->id_conf]);
+			$result = $query_prepare->execute([$this->id_participant]);
 
 			return $result;
 		}
 
-		public function updateConference($optionToModify){
+		public function updateParticipant($optionToModify){
 			$new_connection = new Connection();
 
 			$sentenceSet = "";
@@ -80,11 +62,11 @@
 				$valueTab[] = $value;
 			}
 
-			$valueTab[] = $this->id_conf;
+			$valueTab[] = $this->id_participant;
 
 			$sentenceSet[-1] = " ";
 		
-			$query = 'UPDATE conference SET'.$sentenceSet.' WHERE id_conf = ?;';
+			$query = 'UPDATE participant SET'.$sentenceSet.' WHERE id_participant = ?;';
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
@@ -93,38 +75,33 @@
 			return $result;
 		}
 		
-		static public function getAllConference(){
+		static public function getAllParticipant(){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM conference";
+			$query = "SELECT * FROM participant";
 
-			$data_all_conference = $new_connection->getConnection()->query($query);
+			$data_all_participant = $new_connection->getConnection()->query($query);
 
-			$tab_conference = [];
+			$tab_participant = [];
 
-			while($data = $data_all_conference->fetch()){
-				$conference_item = new Conference();
+			while($data = $data_all_participant->fetch()){
+				$participant_item = new Participant();
 
-				$conference_item->id_conf = $data['id_conf'];
-				$conference_item->nom_conference = $data['nom_conf'];
-				$conference_item->description = $data['description'];
-				$conference_item->status = $data['status'];
-				$conference_item->creator =  $data['creator'];
-				$conference_item->d_day =  $data['d_day'];
-				$conference_item->last_modification_date = $data['last_modification_date'];
-				$conference_item->organisateur = $data["organisateurs"];
-				$conference_item->lieu = $data["lieu"];
+				$participant_item->id_conf = $data['id_conf_conference'];
+				$participant_item->nom_participant = $data['nom_participant'];
+				$participant_item->prenom_participant = $data['prenom_participant'];
+				$participant_item->email_participant = $data['email_participant'];
 
-				$tab_conference[] = $conference_item;
+				$tab_participant[] = $participant_item;
 			}
 
-			return $tab_conference;
+			return $tab_participant;
 		}
 
-		static public function getConference($id){
+		static public function getParticipant($id){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM conference WHERE id_conf = ?";
+			$query = "SELECT * FROM participant WHERE id_participant = ?";
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
@@ -132,8 +109,8 @@
 
 			$data = $query_prepare->fetch(PDO::FETCH_ASSOC);
 
-			$conf = new Conference($data["id_conf"] ?? 'default value', $data["nom_conf"] ?? 'default value', $data["description"] ?? 'default value', $data["d_day"] ?? 'default value', $data["organisateurs"], $data["lieu"]);
+			$participant = new Participant($data["id_participant"], $data["id_conf_conference"], $data["nom_participant"], $data["prenom_participant"], $data["email_partcipant"]);
 
-			return $conf;
+			return $participant;
 		}
 	}
