@@ -5,26 +5,34 @@
         static public function create_activity_controller(){
             $data = Conference::getAllConference();
             
-            $conf_Id_Err = "";
-            $activity_name_Err  = "";
-            $activity_description_Err = "";
+            $error = "";
 
             if ($_POST) {
+
+                var_dump($_POST);
                 
                 $conference_id = $_POST['id_selected'];
 		        $nom_activite = $_POST ['nom_activite'];
 		        $description_activite = $_POST ['content_activite'];
-    
+                $date = $_POST["date_activite"];
+                $type_activite =  $_POST["type_activite"];
+                $content_activite = $_POST["content_activite"];
+                
                 if (empty($conference_id) || $conference_id == "empty") {
-                    $conf_Id_Err = "*You must have selected a conference !";
+                    $error = "*You must have selected a conference !";
                 }else if(empty($nom_activite)){
-                    $activity_name_Err   = "You must have mentionned an activity name !";
+                    $error   = "You must have mentionned an activity name !";
                 }else if(empty($description_activite)){
-                    $activity_description_Err = "*You must have mentionned an activity description !";
-                }else{
-                    ( new activite(null, $conference_id,$description_activite) )->createActivite($conference_id);
+                    $error = "*You must have mentionned an activity description !";
+                }else if(empty($date)){
+                    $error = "*Must mention date";
+                }else if(empty($type_activite)){
+                    $error = "Mention type";
+                }else if(empty($content_activite)){
+                    $error = "Mention content";
+                } else{
+                    ( new Activite(null, $nom_activite, $description_activite, $date, $type_activite) )->createActivite($conference_id);
                 }
-    
             }
             require_once "Views/create_activity.php";
         }

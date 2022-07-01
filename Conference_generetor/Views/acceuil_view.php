@@ -17,7 +17,7 @@
     </p>
     <h1>Organisateurs</h1>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate alias doloribus iste quo, perspiciatis necessitatibus architecto fuga blanditiis enim exercitationem recusandae. Officiis itaque facilis animi tenetur.
+        <?= $data["organisateurs"] ?>
     </p>
     <!-- <table class="sponsors">
         <tr>

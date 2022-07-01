@@ -1,5 +1,6 @@
 <?php
     require_once("Models/conference.php");
+    require_once("Models/activite.php");
 
 function getActivite_Controller(){
     

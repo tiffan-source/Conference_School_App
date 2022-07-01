@@ -1,7 +1,7 @@
 <?php
 	require_once("Connection.php");
 	
-	class activite{
+	class Activite{
 		private $id_activite;
 		private $nom_activite;
 		private $description_activite;

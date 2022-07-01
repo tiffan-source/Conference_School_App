@@ -24,57 +24,20 @@
         <div>
             <h2> Au cours de cette conference on aura :</h2>
             <ul>
-
-                <li>
-                    <h3>Nom de l'activite </h3>
-                    <p>
-                    <?=  $activite->description?>
-                    </p>
-                    <ul>
-                        <li> Date </li>
-                        <li> Lieu </li>
-                        <li> Type </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem laborum illum, labore obcaecati nemo excepturi magni perspiciatis quam autem adipisci!
-                    </p>
-                </li>
-
+                <?php foreach($data as $data_cont){ ?>
+                
                 <li>
                     <h3>Nom de l'activite</h3>
                     <ul>
-                        <li> Date </li>
-                        <li> Lieu </li>
-                        <li> Type </li>
+                        <li> <?= $data_cont["date"] ?> </li>
+                        <!-- <li> <?= $data_cont["lieu"] ?> </li> -->
+                        <li> <?= $data_cont["type"] ?> </li>
                     </ul>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem laborum illum, labore obcaecati nemo excepturi magni perspiciatis quam autem adipisci!
+                        <?= $data_cont["description"] ?>
                     </p>
                 </li>
-
-                <li>
-                    <h3>Nom de l'activite</h3>
-                    <ul>
-                        <li> Date </li>
-                        <li> Lieu </li>
-                        <li> Type </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem laborum illum, labore obcaecati nemo excepturi magni perspiciatis quam autem adipisci!
-                    </p>
-                </li>
-
-                <li>
-                    <h3>Nom de l'activite</h3>
-                    <ul>
-                        <li> Date </li>
-                        <li> Lieu </li>
-                        <li> Type </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem laborum illum, labore obcaecati nemo excepturi magni perspiciatis quam autem adipisci!
-                    </p>
-                </li>
+                <?php } ?>
             </ul>
         </div>
     </main>

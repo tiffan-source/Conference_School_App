@@ -15,7 +15,7 @@
 
         $result_activite = $prepare_query->execute([$_ENV["CONFERENCE_TEST"]]);
 
-        $data = $prepare_query->fetch(PDO::FETCH_ASSOC);
+        $data = $prepare_query->fetchAll();
 
         return $data;
     }

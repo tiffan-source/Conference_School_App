@@ -36,8 +36,9 @@ CREATE TABLE activite (
 	nom_activite varchar(50) NOT NULL,
 	description text NOT NULL,
 	id_conf_conference integer,
-	type varchar(50),
 	date datetime,
+	lieu varchar(50),
+	type varchar(50),
 	foreign key (id_conf_conference) references conference(id_conf)
 
 );

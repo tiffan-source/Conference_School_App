@@ -34,31 +34,31 @@
                                 <option value = <?= $d_conf->id_conf?>><?=$d_conf->nom_conference." #".$d_conf->id_conf ?></option>
                         <?php }?>
                     </select>
-                    <span class="error"> <?php echo $conf_Id_Err;?></span>
+                    <span class="error"> <?php echo $error;?></span>
                 </div>
             
                 <div class="create-activity-groupefield">
                     <label class="create-activity-label" for="name_activite">Nom de l'activite</label>
                     <input name = "nom_activite" type="text" id="name_activite" class="input">
-                    <span class="error"> <?php echo $activity_name_Err ;?></span>
+                    <span class="error"> <?php echo $error ;?></span>
                 </div>
 
                 <div class="create-activity-groupefield">
                     <label class="create-activity-label" for="type_activite">Type de l'activite</label>
                     <input name = "type_activite" type="text" id="type_activite" class="input">
-                    <span class="error"> <?php echo $activity_name_Err ;?></span>
+                    <span class="error"> <?php echo $error;?></span>
                 </div>
 
                 <div class="create-activity-groupefield">
-                    <label class="create-activity-label" for="date_activite">Nom de l'activite</label>
+                    <label class="create-activity-label" for="date_activite">Date de l'activite</label>
                     <input name = "date_activite" type="date" id="date_activite" class="input">
-                    <span class="error"> <?php echo $activity_name_Err ;?></span>
+                    <span class="error"> <?php echo $error;?></span>
                 </div>
 
                 <div class="create-activity-groupefield">
                     <label class="create-activity-label" for="content_activite">Contenue de l'activite</label>
                     <textarea class="text-area" name="content_activite" id="content_activite" cols="10" rows="7"></textarea>
-                    <span class="error"> <?php echo $activity_description_Err;?></span>
+                    <span class="error"> <?php echo $error;?></span>
                 </div>
                 <div class="create-activity-groupefield">
                     <?php if (isset($error) && !empty($error)) {?>

@@ -5,20 +5,28 @@
          <title>Inscription</title>
     </head>
     <body>
+        <?php include("header_view.php") ?>
         <form action="index.php?action=inscription_view" method="post">
-            <label for="lastname">Nom</label>
-            <input name = "lastname" type="text"><br>
-            <span> <?php echo $firstname_Err;?></span><br>
+            <div>
+                <label for="lastname">Nom</label><br>
+                <input name = "lastname" type="text"><br>
+                <span> <?php echo $firstname_Err;?></span><br>
+            </div>
 
-            <label for="firstname">Prénoms</label><br>
-            <input name = "firstname" type="text"><br>
-            <span> <?php echo $lastname_Err;?></span>
+            <div>
+                <label for="firstname">Prénoms</label><br>
+                <input name = "firstname" type="text"><br>
+                <span> <?php echo $lastname_Err;?></span>
+            </div>
 
-            <label for="email">Email</label>
-            <input name = "email" type="email"><br>
-            <span> <?php echo $email_Err;?></span>
+            <div>
+                <label for="email">Email</label><br>
+                <input name = "email" type="email"><br>
+                <span> <?php echo $email_Err;?></span>
+            </div>
 
-            <input type="button" value="Demander Inscription"><br>
+            <input type="submit" value="Demander Inscription"><br>
         </form>
+        <?php include("footer_view.php") ?>
     </body>
 </html>
