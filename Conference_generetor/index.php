@@ -1,24 +1,27 @@
 <?php
 require("Controllers/acceuil_controller.php");
+require("Controllers/activite_controller.php");
+require("Controllers/participant_controller.php");
+require("Controllers/publication_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
     switch($_GET['action']){
         case "activite_view":
-            // Conference_controller::create_Controller();
+            getActivite_Controller();
             break;
 
         case "publication_view":
-            // Conference_controller::destruct_Controller($_GET['id_conf']); //
+            getPublication_Controller();
             break;
 
         case "appel_candidature_view":
-            // User_controller::login_Controller();
+            // 
             break;
 
         case "inscription_view":
-            // Publication_controller::create_publication_controller();
+            getParticipant_Controller();
             break; 
     }
 }else{
-    // getConference_controller();
+    getConference_Controller();
 }

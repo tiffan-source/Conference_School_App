@@ -7,15 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>THE CONFERENCE NAME #2030</h1>
+    <?php include("header_view.php") ?>
+
+    <h1><?= $data["nom_conf"] ?></h1>
     <img src="" alt="">
-    <h1>What is THE CONFERENCE NAME #2030 ?</h1>
+    <!-- <h1>What is THE CONFERENCE NAME #2030 ?</h1> -->
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nam, culpa ad quos aspernatur vitae modi, cum minus distinctio molestias eos harum non aliquam esse eaque quisquam error voluptatum placeat! Sapiente harum, qui magni repellendus aliquam alias in, eos tempore sunt cumque delectus amet! Temporibus numquam praesentium, consectetur amet minus blanditiis nulla soluta sapiente explicabo adipisci accusamus ducimus voluptates repudiandae molestias iste libero ipsa hic. Reiciendis nihil dolore corporis, pariatur atque molestias veniam iusto non expedita! Reprehenderit rem vel consequuntur perspiciatis fugiat explicabo numquam accusamus, excepturi, eum aperiam delectus! 
-        Voluptatibus eius beatae ut reiciendis, nesciunt tempora eaque consectetur eum esse.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo dolorem voluptas assumenda tenetur odio tempora vel ipsa reiciendis, neque recusandae quasi quia soluta voluptatum cupiditate?Lorem ipsum dolor sit amet.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati odio repellendus eius quam rem corporis repellat! Reprehenderit temporibus voluptatem magnam?
-        
+        <?= $data["description"] ?>        
     </p>
     <h1>Organisateurs</h1>
     <p>
@@ -34,6 +32,7 @@
             </td>
         </tr>
     </table> -->
+    <?php include("footer_view.php") ?>
 
 </body>
 </html>

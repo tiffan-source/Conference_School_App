@@ -5,6 +5,7 @@
          <title>Inscription</title>
     </head>
     <body>
+        <?php include("header_view.php") ?>
         <fieldset>
             <legend> <strong>Enroll</strong> </legend>
             <label for="last name">Nom</label>
@@ -24,5 +25,7 @@
             <br>
             <button>Submit</button>
         </fieldset>
+        <?php include("footer_view.php") ?>
+
     </body>
 </html>

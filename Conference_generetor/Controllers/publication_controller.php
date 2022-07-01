@@ -1,9 +1,8 @@
 <?php
 require_once("Models/publication.php");
 
-function getConference_Controller(){
+function getPublication_Controller(){
     
-    $data = getConference();
-    
+    $data = getPublication();
     include_once("Views/publication_view.php"); 
 }
