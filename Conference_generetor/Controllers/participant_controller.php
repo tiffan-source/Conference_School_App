@@ -1,5 +1,5 @@
 <?php
-require_once("Models/participant.pthe publication content hp");
+require_once("Models/participant.php");
 
 function getParticipant_Controller(){
     
