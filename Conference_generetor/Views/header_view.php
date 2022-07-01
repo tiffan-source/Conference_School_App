@@ -1,15 +1,17 @@
+
 <header>
-    <nav>
-        <ul>
-            <li><a href="#">Acceuil</a></li>
-            <li><a href="#">Programme</a></li>
-            <li><a href="#">Publication</a></li>
-            <li><a href="#">Appel a candidature</a></li>
-            <li><a href="#">Inscription</a></li>
+    <nav class = "navbar">
+        <ul class = "ul_navbar">
+            <li class = "li_navbar"><a href="#">Acceuil</a></li>
+            <li class = "li_navbar"><a href="#">Programme</a></li>
+            <li class = "li_navbar"><a href="#">Publication</a></li>
+            <li class = "li_navbar"><a href="#">Appel a candidature</a></li>
+            
+            <li class = "li_navbar" style="float:right; background-color: #04AA6D;" ><a href="#">Inscription</a></li>
         </ul>
         <div>
-            <h1>Nom de la conference</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, similique! A rerum nam perspiciatis incidunt, omnis delectus eius maiores ab inventore ipsum ullam pariatur sint maxime quisquam similique officia obcaecati.</p>
+            <h1 class = "to_right">THE PROS AVENGERS 2025</h1>
+            <p></p>
         </div>
     </nav>
 </header>
