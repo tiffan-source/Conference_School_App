@@ -1,14 +1,16 @@
 <?php
 	require_once("Connection.php");
 	
-	class Appel {
+	class Appel{
 	    
 		private $id_appel;
 		private $sujet_appel;
+		private $contenu;
 
-		public function __construct($id_appel = null, $sujet_appel = null){
+		public function __construct($id_appel = null, $sujet_appel = null, $contenu){
 			$this->id_appel = $id_appel;
 			$this->sujet_appel = $sujet_appel;
+			$this->contenu = $contenu;
 	    }
 
 		//LES GETTERS
@@ -23,19 +25,20 @@
 		public function createAppel($id_conference){
 			$new_connection = new Connection();
 
-			$query = "INSERT INTO appel (id_conf_conference, sujet) VALUES (?, ?);";
+			$query = "INSERT INTO appel_a_candidature (id_conf_conference, sujet_appel, contenu) VALUES (?, ?, ?);";
 			
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$id_conference, $this->sujet_appel]);
+			$result = $query_prepare->execute([$id_conference, $this->sujet_appel, $this->contenu]);
 
 			return $result;
+		
 		}
 		
 		public function deleteAppel(){
 			$new_connection = new Connection();
 			
-			$query = "DELETE FROM appel WHERE id_appel = ?;";
+			$query = "DELETE FROM appel_a_candidature WHERE id_appel = ?;";
 		
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
@@ -47,7 +50,7 @@
 		public function updateAppel($sujet){
 			$new_connection = new Connection();
 
-			$query = "UPDATE appel SET sujet='$sujet' WHERE id_appel = ?;";
+			$query = "UPDATE appel_a_candidature SET sujet='$sujet' WHERE id_appel = ?;";
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
@@ -59,7 +62,7 @@
 		static public function readAllAppel(){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM appel";
+			$query = "SELECT * FROM appel_a_candidature";
 
 			$data_all_appel = $new_connection->getConnection()->query($query);
 
@@ -69,8 +72,9 @@
 				$appel_item = new Appel();
 
 				$appel_item->id_appel = $data['id_appel'];
-				$appel_item->sujet_appel = $data['sujet'];
-
+				$appel_item->sujet_appel = $data['sujet_appel'];
+				$appel_item->contenu = $data['contenu'];
+				
 				$tab_appel[] = $appel_item;
 			}
 			return $tab_publication;
@@ -79,7 +83,7 @@
 		static public function getAppel($id){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM appel WHERE id_appel = ?";
+			$query = "SELECT * FROM appel_a_candidature WHERE id_appel = ?";
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
