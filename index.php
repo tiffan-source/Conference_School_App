@@ -4,6 +4,7 @@ require_once("Controllers/Conference_controller.php");
 require_once("Controllers/User_controller.php");
 require_once("Controllers/Publication_controller.php");
 require_once("Controllers/Activity_controller.php");
+require_once("Controllers/Appel_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
 
@@ -26,6 +27,10 @@ if(isset($_GET['action']) && $_GET['action']!=''){
         
         case "create_activity":
             Activity_controller::create_activity_controller();
+            break;
+        
+        case "create_appel_candidature":
+            Appel_controller::create_appel_controller();
             break;
         
     }
