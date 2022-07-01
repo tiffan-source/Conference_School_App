@@ -5,24 +5,20 @@
          <title>Inscription</title>
     </head>
     <body>
-        <fieldset>
-            <legend> <strong>Enroll</strong> </legend>
-            <label for="last name">Nom</label>
-            <input type="text" name="Nom" >
-            <br>
-            <label for="first name">Prenoms</label>
-            <input type="text" name="Prenom" >
-            <br>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="Age" >
-            <br>
-            <label for="Email">Email</label>
-            <input type="email" name="" >
-            <br>
-            <label for="ville_provenance">Ville de provenance</label>
-            <input type="text" name="" >
-            <br>
-            <button>Submit</button>
-        </fieldset>
+        <form action="index.php?action=inscription_view" method="post">
+            <label for="lastname">Nom</label>
+            <input name = "lastname" type="text"><br>
+            <span> <?php echo $firstname_Err;?></span><br>
+
+            <label for="firstname">Prénoms</label><br>
+            <input name = "firstname" type="text"><br>
+            <span> <?php echo $lastname_Err;?></span>
+
+            <label for="email">Email</label>
+            <input name = "email" type="email"><br>
+            <span> <?php echo $email_Err;?></span>
+
+            <input type="button" value="Demander Inscription"><br>
+        </form>
     </body>
 </html>

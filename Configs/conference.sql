@@ -23,6 +23,8 @@ CREATE TABLE conference (
 CREATE TABLE participant(
 	id_participant integer NOT NULL  primary key AUTO_INCREMENT,
 	nom_participant varchar(50) NOT NULL,
+	prenom_participant varchar(50) NOT NULL,
+	email_participant varchar(50) NOT NULL,
 	id_conf_conference integer,
 	inscrit varchar(50),
 	foreign key (id_conf_conference) references conference(id_conf)

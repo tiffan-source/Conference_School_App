@@ -1,5 +1,6 @@
 <?php
 require("Controllers/acceuil_controller.php");
+require("Controllers/participant_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
     switch($_GET['action']){
@@ -16,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             break;
 
         case "inscription_view":
-            // Publication_controller::create_publication_controller();
+            getParticipant_Controller();
             break; 
     }
 }else{
