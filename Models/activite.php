@@ -31,7 +31,7 @@
 			
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$id_conf, $this->nom_activite, $this->description_activite]);
+			$result = $query_prepare->execute([$id_conference, $this->nom_activite, $this->description_activite]);
 
 			return $result;
 		}

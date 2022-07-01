@@ -3,6 +3,7 @@
 require_once("Controllers/Conference_controller.php");
 require_once("Controllers/User_controller.php");
 require_once("Controllers/Publication_controller.php");
+require_once("Controllers/Activity_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
 
@@ -23,6 +24,9 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             Publication_controller::create_publication_controller();
             break;
         
+        case "create_activity":
+            Activity_controller::create_activity_controller();
+            break;
         
     }
 }else{
