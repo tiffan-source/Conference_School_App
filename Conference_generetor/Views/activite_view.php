@@ -24,10 +24,9 @@
         <div>
             <h2> Au cours de cette conference on aura :</h2>
             <ul>
-            <?php while($activite = $result_activite->fetch_assoc()) {?>
 
                 <li>
-                    <h3>Nom de l'activite : <?=  $activite->nom_activite?></h3>
+                    <h3>Nom de l'activite </h3>
                     <p>
                     <?=  $activite->description?>
                     </p>
@@ -41,7 +40,6 @@
                     </p>
                 </li>
 
-            <?php } ?>
                 <li>
                     <h3>Nom de l'activite</h3>
                     <ul>

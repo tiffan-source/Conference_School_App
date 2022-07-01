@@ -21,7 +21,7 @@
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate alias doloribus iste quo, perspiciatis necessitatibus architecto fuga blanditiis enim exercitationem recusandae. Officiis itaque facilis animi tenetur.
     </p>
-    <table class="sponsors">
+    <!-- <table class="sponsors">
         <tr>
             <td class="sponsor">
                     <img src="assets/kitten1.jpg" alt="First Sponsor Name">
@@ -33,7 +33,7 @@
                     <img src="assets/kitten3.jpg" alt="Third Sponsor Name">                
             </td>
         </tr>
-    </table>
+    </table> -->
 
 </body>
 </html>
