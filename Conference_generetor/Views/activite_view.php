@@ -5,21 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Style/navbar.css">
+    <!-- <link rel="stylesheet" href="Style/navbar.css"> -->
     
 </head>
 
 <body>
 
     <?php include "header_view.php"?>
-    <?php require_once("Models/activite.php");?>
     
-    <div class = "banner">
+    <!-- <div class = "banner">
         <img src="img/banner.jpg" alt="banner conference" class = "img_center">
         <div class = "text_on_banner">
             <h1>California, USA</h3>
         </div>
-    </div>
+    </div> -->
     
     <main>
         <div>
