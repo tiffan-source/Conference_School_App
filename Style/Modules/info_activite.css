@@ -1,0 +1,21 @@
+.info-activite-li{
+    margin: 1rem auto;
+    width: 100%;
+    padding :1rem;
+    border: 1px solid #d5e3ec;
+    box-shadow: 0 0 4px #D8E1E8;
+
+    border-radius: 10px;
+}
+
+.info-activite-li-head{
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.info-activite-li-head strong{
+    font-size: 1.1rem;
+    font-weight: bold;
+}

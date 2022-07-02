@@ -1,5 +1,6 @@
 .modal_config_conference{
     border-radius: 10px;
+    padding: 1rem;
     border: 1px solid #d5e3ec;
     box-shadow: 0 0 4px #D8E1E8;
     height: 100%;
@@ -8,8 +9,9 @@
 .modal_config_conference_head{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.2rem;    
+    padding-bottom: 2rem;
+
     color: #002147;
 }
 

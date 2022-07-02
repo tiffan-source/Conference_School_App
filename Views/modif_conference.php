@@ -21,35 +21,56 @@
         </div>
 
         <div id="info_publication" class="modal_config_conference_publication hidde">
-            <?php foreach($data_publication as $data_publication_item){ ?>
-                <div>
-                    <p>ID de la publication : <?= $data_publication_item->id_publication ?></p>
-                    <p>Titre de la publication : <?= $data_publication_item->titre_publication ?></p>
-                    <p>Description conference : <?= $data_publication_item->content_publication ?></p>
-                </div>
-            <?php } ?>
+            <ul>           
+                <?php foreach($data_publication as $data_publication_item){ ?>
+                    <div>
+                        <li>
+                            <p>ID de la publication : <?= $data_publication_item->id_publication ?></p>
+                            <p>Titre de la publication : <?= $data_publication_item->titre_publication ?></p>
+                            <p>Description conference : <?= $data_publication_item->content_publication ?></p>
+                        </li>
+                        
+                    </div>
+                <?php } ?>
+            </ul>
         </div>
 
         <div id="info_activity" class="modal_config_conference_activite hidde">
-            <?php foreach($data_activite as $data_activite_item){ ?>
-                <div>
-                    <p>ID activite : <?= $data_activite_item->id_activite ?></p>
-                    <p>Titre de activite : <?= $data_activite_item->nom_activite ?></p>
-                    <p>Description actvite : <?= $data_activite_item->description_activite ?></p>
-                    <p>Date actvite : <?= $data_activite_item->date ?></p>
-                    <p>Type actvite : <?= $data_activite_item->type ?></p>
-                </div>
-            <?php } ?>
-        </div>
+            <ul class = "info-activite-ul">
 
-        <div id="info_appel" class="modal_config_conference_appel hidde">
-            <?php foreach($data_appel as $data_appel_item){ ?>
-                <div>
-                    <p>ID de l'appel : <?= $data_appel_item->id_appel ?> </p>
-                    <p>Titre de l'appel : <?= $data_appel_item->sujet_appel ?> </p>
-                    <p>Contenu : <?= $data_appel_item->contenu ?></p>
-                </div>
-            <?php } ?>
+                <?php foreach($data_activite as $data_activite_item){ ?>
+                            <li class = "info-activite-li">
+                                <div class = "info-activite-li-head">
+                                    <span> <strong>ID</strong>: # <?= $data_activite_item->id_activite ?></span>
+                                    <span><strong>Titre</strong>: <?= $data_activite_item->nom_activite ?> </span>
+                                    <span> <strong>Date</strong>: <?= $data_activite_item->date ?></span>
+                                    <span><strong>Type</strong> : <?= $data_activite_item->type ?></span>
+                                </div>
+                                <p>
+                                    
+                                    <?= $data_activite_item->description_activite ?>
+                                </p>
+                            </li>            
+                <?php } ?>
+
+            </ul>
+        </div>
+        
+        <div id = "info_appel" class = "modal_config_conference_activite hidde">
+            <div id="info_appel" class="modal_config_conference_appel hidde">
+                <ul class = "info-appel-ul">
+                    <?php foreach($data_appel as $data_appel_item){?>
+                        <li class = "info-appel-li">
+                            <div class = "info-appel-li-head">
+                            <?php echo var_dump($data_appel)?>
+                                <span><strong>ID </strong>: #<?= $data_appel_item->id_appel ?> </span>
+                                <span><strong>Titre </strong>: <?= $data_appel_item->sujet_appel ?> </span>
+                                <span><strong>Contenu </strong>: <?= $data_appel_item->contenu ?></span>
+                            </div>     
+                        </li>
+                    <?php } ?>
+                </ul>    
+            </div>
         </div>
     </div>
 
