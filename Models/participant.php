@@ -40,7 +40,7 @@
 		 * CRUD
 		 */
 		
-		public function deleteParticpant(){
+		public function deleteParticipant(){
 			$new_connection = new Connection();
 			
 			$query = "DELETE FROM participant WHERE id_participant = ?;";
@@ -79,7 +79,7 @@
 		static public function getAllParticipant(){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM participant";
+			$query = "SELECT * FROM participant where inscrit = 'NON'";
 
 			$data_all_participant = $new_connection->getConnection()->query($query);
 
@@ -87,7 +87,7 @@
 
 			while($data = $data_all_participant->fetch()){
 				$participant_item = new Participant();
-
+				$participant_item->id_participant = $data['id_participant'];
 				$participant_item->id_conf = $data['id_conf_conference'];
 				$participant_item->nom_participant = $data['nom_participant'];
 				$participant_item->prenom_participant = $data['prenom_participant'];
@@ -110,7 +110,7 @@
 
 			$data = $query_prepare->fetch(PDO::FETCH_ASSOC);
 
-			$participant = new Participant($data["id_participant"], $data["id_conf_conference"], $data["nom_participant"], $data["prenom_participant"], $data["email_partcipant"]);
+			$participant = new Participant($data["id_participant"], $data["id_conf_conference"], $data["nom_participant"], $data["prenom_participant"], $data["email_participant"]);
 
 			return $participant;
 		}

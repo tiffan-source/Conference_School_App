@@ -13,31 +13,43 @@
     <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
     <link rel="stylesheet" href="Style/Modules/panel.css">
     <link rel="stylesheet" href="Style/Modules/alert.css">
-
+    <link rel="stylesheet" href="Style/Modules/gestion_participant.css">
 
     <title>Document</title>
 </head>
 <body>
-    <?php include("panel.php"); ?>
-    <div id = "all_participant">
-        <?php foreach($data as $data_elem) { ?>
-            
-            <div class='participant'>
-    
-                    <div class='participant-information'>
+   
+    <div id = "content-app">
 
-                        <span class='participant-nom-prenom'> <?= $data_elem->nom_participant . $data_elem->prenom_participant ?></span> 
-                        <span class='participant-email'><?= $data_elem->email_partcipant ?></span>
+        <?php include("panel.php"); ?>
     
-                    </div>
-    
-                    <button class ='button button-delete'>
-                        <a href=<?="index.php?action=valider_participant&id_participant=".$data_elem->id_participant?> >Valider</a>
-                        <a href=<?="index.php?action=rejeter_participant&id_participant=".$data_elem->id_participant?> >Rejeter</a>
-                    </button>
-            </div>
+        <div id = "participant">
 
-        <?php }?>
+        
+            <?php foreach($data as $data_elem) { ?>
+                
+                <div class='participant'>
+        
+                        <div class='participant-information'>
+
+                            <span class='participant-nom-prenom'> <?= $data_elem->nom_participant ."   ". $data_elem->prenom_participant ?></span> <br>
+                            <span class='participant-email'><?= $data_elem->email_participant  ?></span>
+        
+                        </div>
+                    <div>
+
+                    
+                        <button class ='button button-create'>
+                            <a href=<?='index.php?action=valider_participant&id_participant='.$data_elem->id_participant?> >Valider</a>
+                        </button>
+                        <button class ='button button-delete '>
+                            <a href=<?='index.php?action=rejeter_participant&id_participant='.$data_elem->id_participant?> >Rejeter</a>
+                        </button>
+                    </div>        
+                </div>
+
+            <?php }?>
+        </div>
     </div>   
         
 </body>

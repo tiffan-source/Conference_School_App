@@ -39,10 +39,10 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             break;
         case "rejeter_participant":
             Participant_controller::rejeter_participant_controller($_GET["id_participant"]);
-            
+            break;
         case "valider_participant":
             Participant_controller::valider_participant_controller($_GET["id_participant"]);
-        
+            break;
     }
 
 }else{

@@ -6,8 +6,8 @@
         static public function checker_participant_controller(){
 
             $data = Participant::getAllParticipant();
-
-            require_once "Views/gestion_participant.php";
+            
+            require_once("Views/gestion_participant.php");
         }
 
         static public function rejeter_participant_controller($id_participant){
