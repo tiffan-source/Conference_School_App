@@ -14,6 +14,7 @@
             <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_activity">Ajouter des activites</a></li>
             <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_publication">Ajouter des publications</a></li>
             <li class="panel-option-list"><a class="panel-link" href="index.php?action=create_appel_candidature">Ajouter Appel a candidature</a></li>
+            <li class="panel-option-list"><a class="panel-link" href="index.php?action=gerer_participant">Gestion des Participants</a></li>
         </ul>
     </div>
     <div class="panel-login-groupe">

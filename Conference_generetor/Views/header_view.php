@@ -9,8 +9,6 @@
             <li ><a href="index.php?action=inscription_view">Inscription</a></li>
         </ul>
         <div>
-            <h1>THE PROS AVENGERS 2025</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, repellat?</p>
         </div>
     </nav>
 </header>

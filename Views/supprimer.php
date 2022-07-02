@@ -29,17 +29,17 @@
                 <?php foreach ($data as $d_conf){ ?>
                     <div class='delete'>
 
-                    <div class='delete-information'>
+                        <div class='delete-information'>
 
-                        <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
+                            <span class='delete-information-conference'> <?= $d_conf->nom_conference ?> </span> 
 
-                        <span class='delete-information-modification'>Modifiée le <?= $d_conf->last_modification_date ?></span>
+                            <span class='delete-information-modification'>Modifiée le <?= $d_conf->last_modification_date ?></span>
 
-                    </div>
+                        </div>
 
-                    <button class ='button button-delete'>
-		                <a href=<?="index.php?action=detruire_conference&id_conf=".$d_conf->id_conf ?> >Supprimer</a>
-		            </button>
+                        <button class ='button button-delete'>
+                            <a href=<?="index.php?action=detruire_conference&id_conf=".$d_conf->id_conf ?> >Supprimer</a>
+                        </button>
                     </div>
                 <?php } ?>
 

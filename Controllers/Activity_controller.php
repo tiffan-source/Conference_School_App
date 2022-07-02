@@ -1,6 +1,7 @@
 <?php
     require_once("Models/activite.php");
     require_once("Models/conference.php");
+    
     class Activity_controller{
         static public function create_activity_controller(){
             $data = Conference::getAllConference();
@@ -9,6 +10,7 @@
 
             if ($_POST) {
 
+                // var_dump($_POST);
                 
                 $conference_id = $_POST['id_selected'];
 		        $nom_activite = $_POST ['nom_activite'];
@@ -36,4 +38,4 @@
             require_once "Views/create_activity.php";
         }
     }
-?>
+?> 
