@@ -48,7 +48,6 @@
                                     <span><strong>Type</strong> : <?= $data_activite_item->type ?></span>
                                 </div>
                                 <p>
-                                    
                                     <?= $data_activite_item->description_activite ?>
                                 </p>
                             </li>            
@@ -58,12 +57,11 @@
         </div>
         
         <div id = "info_appel" class = "modal_config_conference_activite hidde">
-            <div id="info_appel" class="modal_config_conference_appel hidde">
+            <div id="info_appel" class="modal_config_conference_appel">
                 <ul class = "info-appel-ul">
                     <?php foreach($data_appel as $data_appel_item){?>
                         <li class = "info-appel-li">
                             <div class = "info-appel-li-head">
-                            <?php echo var_dump($data_appel)?>
                                 <span><strong>ID </strong>: #<?= $data_appel_item->id_appel ?> </span>
                                 <span><strong>Titre </strong>: <?= $data_appel_item->sujet_appel ?> </span>
                                 <span><strong>Contenu </strong>: <?= $data_appel_item->contenu ?></span>

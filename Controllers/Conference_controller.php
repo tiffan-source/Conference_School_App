@@ -24,7 +24,7 @@ class Conference_controller{
         $data_activite = Activite::getActivite($id, 1);
         $data_appel = Appel::getAppel($id, 1);
         
-        
+        // var_dump($data_appel);
         $check_connection = User_controller::checkLog();
 
         $active_voir_plus = true;
