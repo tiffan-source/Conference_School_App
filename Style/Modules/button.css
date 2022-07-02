@@ -21,6 +21,11 @@
     color: white;
 }
 
+.button-green{
+    background-color: rgb(81, 232, 22);
+    color: white;
+}
+
 .button-create{
     background-color: #002147;
     color: white;
@@ -32,6 +37,10 @@
 
 .button-delete:hover{
     background-color: darkred;
+}
+
+.button-green:hover{
+    background-color: rgb(16, 52, 2);
 }
 
 .button-secondary{

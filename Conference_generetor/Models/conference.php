@@ -12,10 +12,10 @@
         
         $prepare_query = $connection->prepare($query);
 
-        $result_conference = $prepare_query->execute([$_ENV["CONFERENCE_TEST"]]);
+        $prepare_query->execute([$_ENV["CONFERENCE_TEST"]]);
         
         $data = $prepare_query->fetch(PDO::FETCH_ASSOC);
-
+        
         return $data;
     }
 ?>

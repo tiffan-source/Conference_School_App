@@ -6,10 +6,12 @@
     </head>
     <body>
         <?php include("header_view.php") ?>
-        <div>
-            <h3><?= $data["titre"] ?></h3>
-            <p> <?= $data["contenu"] ?>
-        </div>
+        <?php foreach($data as $data_elem){ ?>
+            <div>
+                <h3><?= $data_elem["titre"] ?></h3>
+                <p> <?= $data_elem["contenu"] ?></p>
+            </div>
+        <?php } ?>
         <?php include("footer_view.php")?>
     </body>
 </html>

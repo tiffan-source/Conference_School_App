@@ -48,6 +48,7 @@ CREATE TABLE appel_a_candidature(
 	sujet_appel varchar(50) NOT NULL,
 	contenu text,
 	id_conf_conference integer,
+	preoccupation_majeure text,
 	foreign key (id_conf_conference) references conference(id_conf)
 
 );

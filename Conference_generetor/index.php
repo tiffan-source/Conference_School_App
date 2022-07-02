@@ -3,6 +3,7 @@ require("Controllers/acceuil_controller.php");
 require("Controllers/activite_controller.php");
 require("Controllers/participant_controller.php");
 require("Controllers/publication_controller.php");
+require("Controllers/appel_candidature_controller.php");
 
 if(isset($_GET['action']) && $_GET['action']!=''){
     switch($_GET['action']){
@@ -15,7 +16,7 @@ if(isset($_GET['action']) && $_GET['action']!=''){
             break;
 
         case "appel_candidature_view":
-            // 
+            getAppel_Controller();
             break;
 
         case "inscription_view":
