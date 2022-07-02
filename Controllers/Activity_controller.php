@@ -10,8 +10,6 @@
 
             if ($_POST) {
 
-                // var_dump($_POST);
-                
                 $conference_id = $_POST['id_selected'];
 		        $nom_activite = $_POST ['nom_activite'];
 		        $description_activite = $_POST ['content_activite'];

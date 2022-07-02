@@ -3,10 +3,10 @@
 	
 	class Appel{
 	    
-		private $id_appel;
-		private $sujet_appel;
-		private $contenu;
-		private $preoccupation_majeure;
+		public $id_appel;
+		public $sujet_appel;
+		public $contenu;
+		public $preoccupation_majeure;
 
 		public function __construct($id_appel = null, $sujet_appel = null, $contenu = null, $preoccupation_majeure = null){
 			$this->id_appel = $id_appel;
@@ -49,14 +49,26 @@
 			return $result;
 		}
 		
-		public function updateAppel($sujet){
+		public function updateAppel($optionToModify){
 			$new_connection = new Connection();
 
-			$query = "UPDATE appel_a_candidature SET sujet='$sujet' WHERE id_appel = ?;";
+			$sentenceSet = "";
+			$valueTab = [];
+
+			foreach($optionToModify as $key => $value){
+				$sentenceSet .= " $key = ?,";
+				$valueTab[] = $value;
+			}
+
+			$valueTab[] = $this->id_conf;
+
+			$sentenceSet[-1] = " ";
+		
+			$query = 'UPDATE appel_a_candidature SET'.$sentenceSet.' WHERE id_appel = ?;';
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute($this->id_appel);
+			$result = $query_prepare->execute($valueTab);
 
 			return $result;
 		}
@@ -76,6 +88,7 @@
 				$appel_item->id_appel = $data['id_appel'];
 				$appel_item->sujet_appel = $data['sujet_appel'];
 				$appel_item->contenu = $data['contenu'];
+				$appel_item->preoccupation_majeure = $data["preoccupation_majeure"];
 				
 				$tab_appel[] = $appel_item;
 			}
@@ -102,13 +115,11 @@
 					$appel->id_appel = $data["id_appel"];
 					$appel->sujet_appel = $data["sujet_appel"];
 					$appel->contenu = $data["contenu"];
-
+					$appel->preoccupation_majeure = $data["preoccupation_majeure"];
 					$all_appel[] = $appel;
 				}
-				return $all_appel;
+					return $all_appel;
 			}
 			return null;
 		}
 	}
-	
-?>

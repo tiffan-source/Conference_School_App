@@ -1,0 +1,31 @@
+.create-appel-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    height: 100%;
+}
+
+.create-appel-groupefield{
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+
+    align-self: center;
+    /* justify-self: center; */
+    /* gap: 1rem; */
+}
+
+.create-appel-groupefield-submit{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+}
+
+.create-appel-label{
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #002147;
+}
+
