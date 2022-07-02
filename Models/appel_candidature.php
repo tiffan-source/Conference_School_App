@@ -3,11 +3,11 @@
 	
 	class Appel{
 	    
-		private $id_appel;
-		private $sujet_appel;
-		private $contenu;
+		public $id_appel;
+		public $sujet_appel;
+		public $contenu;
 
-		public function __construct($id_appel = null, $sujet_appel = null, $contenu){
+		public function __construct($id_appel = null, $sujet_appel = null, $contenu = null){
 			$this->id_appel = $id_appel;
 			$this->sujet_appel = $sujet_appel;
 			$this->contenu = $contenu;
@@ -77,24 +77,33 @@
 				
 				$tab_appel[] = $appel_item;
 			}
-			return $tab_publication;
+			return $tab_appel;
 		}
 
-		static public function getAppel($id){
+		static public function getAppel($id, $type){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM appel_a_candidature WHERE id_appel = ?";
+			if($type == 0)
+				$query = "SELECT * FROM appel_a_candidature WHERE id_appel = ?";
+			else if($type == 1)
+				$query = "SELECT * FROM appel_a_candidature WHERE id_conf_conference = ?";
 
-			$query_prepare = $new_connection->getConnection()->prepare($query);
+				$query_prepare = $new_connection->getConnection()->prepare($query);
 
 			$testQuery = $query_prepare->execute([$id]);
-
 			if($testQuery){
-				$data = $query_prepare->fetchAll();
+				$all_appel = [];
 
-				$appel = new Appel($data[0]["id_appel"], $data[0]["sujet"]);
+				while($data = $query_prepare->fetch()){
+					$appel= new Appel();
 
-				return $publication;
+					$appel->id_appel = $data["id_appel"];
+					$appel->sujet_appel = $data["sujet_appel"];
+					$appel->contenu = $data["contenu"];
+
+					$all_appel[] = $appel;
+				}
+				return $all_appel;
 			}
 			return null;
 		}

@@ -1,0 +1,40 @@
+.modal_config_conference{
+    border-radius: 10px;
+    border: 1px solid #d5e3ec;
+    box-shadow: 0 0 4px #D8E1E8;
+    height: 100%;
+}
+
+.modal_config_conference_head{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #002147;
+}
+
+.hidde{
+    display: none;
+}
+
+.display{
+    display: block;
+}
+
+/* 
+.modal-config-conference{
+    display: none;
+} */
+
+.modal-config-conference_active{
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000066;
+}
+
+.modal_config_conference{
+    background-color: #fff;
+}

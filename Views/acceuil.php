@@ -14,17 +14,8 @@
     <link rel="stylesheet" href="Style/Layouts/panel.layout.css">
     <link rel="stylesheet" href="Style/Modules/panel.css">
     <link rel="stylesheet" href="Style/Modules/button.css">
-    
-    
-    <!-- <script>
-        function myFunction() {
-            var x = document.getElementById("search");
-            x.value = x.value.toUpperCase();
-            
-        }
-    </script> -->
-
-
+    <link rel="stylesheet" href="Style/Layouts/modal_conference.layout.css">
+    <link rel="stylesheet" href="Style/Modules/modal_conference.css">
     <title>Document</title>
 </head>
 <body>
@@ -39,16 +30,6 @@
             </div>
             <div class="acceuil-conference">
                 <ul class="acceuil-list-conference">
-<!--                    
-                    <li  class="acceuil-list-conference-element">
-                        <div class="acceuil-list-conference-title">
-                            <span class="acceuil-list-conference-name">Conferences</span>
-                            <span class="acceuil-list-conference-lastupdate"></span>
-                        </div>
-                        <span class="acceuil-list-conference-status" style = "text-align : center;">Status</span>
-                        <span class="acceuil-list-conference-creator" style = "text-align : center;">ID Creator</span>
-                        <a href="#" class="acceuil-list-conference-showmore"></a>
-                    </li> -->
                     <?php foreach($data as $d_conf){ ?>
 
                     <li  class="acceuil-list-conference-element">
@@ -56,9 +37,9 @@
                             <span class="acceuil-list-conference-name" ><?= $d_conf->nom_conference ?></span>
                             <span class="acceuil-list-conference-lastupdate"><?= $d_conf->d_day?></span>
                         </div>
-                        <span class="acceuil-list-conference-status" style = "text-align : right;" ><?=  $d_conf->status?></span>
-                        <span class="acceuil-list-conference-creator" style = "text-align : right;" ><?=  $d_conf->creator ?></span>
-                        <a href="#" class="acceuil-list-conference-showmore">Voir plus</a>
+                        <span class="acceuil-list-conference-status"  ><?=  $d_conf->status?></span>
+                        <span class="acceuil-list-conference-creator"  ><?=  $d_conf->creator ?></span>
+                        <a id="more_conf" href=<?='index.php?id='.$d_conf->id_conf ?> class="acceuil-list-conference-showmore">Voir plus</a>
                     </li>
 
                     <?php } ?>
@@ -66,5 +47,12 @@
             </div>
         </div>
     </div>
+
+    <?php if($active_voir_plus) {?>
+    <div id="modal-config-conference" class="modal-config-conference modal-config-conference_active">
+        <?php include("modif_conference.php") ?>
+    </div>
+    <?php } ?>
 </body>
+<script src="Script/modal_conference.js"></script>
 </html>

@@ -2,9 +2,9 @@
 	require_once("Connection.php");
 	
 	class Activite{
-		private $id_activite;
-		private $nom_activite;
-		private $description_activite;
+		public $id_activite;
+		public $nom_activite;
+		public $description_activite;
 		public $date;
 		public $type;
 		
@@ -99,25 +99,40 @@
 			return $tab_activite;
 		}
 		
-		public function getActivite($id){
+		static public function getActivite($id, $type){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM activite WHERE id_activite = ?";
+
+			if($type == 0)
+				$query = "SELECT * FROM activite WHERE id_activite = ?";
+			else if($type == 1)
+				$query = "SELECT * FROM activite WHERE id_conf_conference = ?";
+
 
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
 			$testQuery = $query_prepare->execute([$id]);
 
 			if($testQuery){
-				$data = $query_prepare->fetchAll();
 
-				$activite = new Activite($data[0]["id_activite"], $data[0]["nom_activite"], $data[0]["description"], $data[0]["type"], $data[0]["description"]);
+				$allActivity = [];
+
+				while($data = $query_prepare->fetch()){
+					$activity = new Activite();
+
+					$activity->id_activite = $data["id_activite"];
+					$activity->nom_activite = $data["nom_activite"];
+					$activity->description_activite = $data["description"];
+					$activity->date = $data["lieu"];
+					$activity->type = $data["type"];
+					$activity->date = $data["date"];
+
+					$allActivity[] = $activity;
+				}
 	
-				return $activite;
+				return $allActivity;
 			}
 			return null;
 		}
 		
 	}
-
-?>

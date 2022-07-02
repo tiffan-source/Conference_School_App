@@ -100,24 +100,33 @@
 			return $tab_publication;
 		}
 
-		static public function getPublication($id){
+		static public function getPublication($id, $type){
 			$new_connection = new Connection();
 
-			$query = "SELECT * FROM publication WHERE id_publication = ?";
+			if($type == 0)
+				$query = "SELECT * FROM publication WHERE id_publication = ?";
+			else if($type == 1)
+				$query = "SELECT * FROM publication WHERE id_conf_conference = ?";
 
-			$query_prepare = $new_connection->getConnection()->prepare($query);
+				$query_prepare = $new_connection->getConnection()->prepare($query);
 
 			$testQuery = $query_prepare->execute([$id]);
-
 			if($testQuery){
-				$data = $query_prepare->fetchAll();
+				$all_publication = [];
 
-				$publication = new Publication($data[0]["id_publication"], $data[0]["titre"], $data[0]["contenu"]);
+				while($data = $query_prepare->fetch()){
+					$publication = new Publication();
+
+					$publication->id_publication = $data["id_publication"];
+					$publication->titre_publication = $data["titre"];
+					$publication->content_publication = $data["contenu"];
+
+					$all_publication[] = $publication;
+				}
 	
-				return $publication;
+				return $all_publication;
+
 			}
 			return null;
 		}
 	}
-
-?>

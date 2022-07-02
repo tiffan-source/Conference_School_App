@@ -12,13 +12,16 @@
 		public $organisateur;
 		public $lieu;
 
-		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null, $organisateur = null, $lieu = null){
+		public function __construct($id_conf = null, $nom_conference = null, $description = null, $d_day = null, $organisateur = null, $lieu = null, $status = null, $last_modification_date = null, $creator = null){
 			$this->id_conf = $id_conf;
 			$this->nom_conference = $nom_conference;
 			$this->description = $description;
 			$this->d_day = $d_day;
 			$this->organisateur = $organisateur;
 			$this->lieu = $lieu;
+			$this->status = $status;
+			$this->last_modification_date = $last_modification_date;
+			$this->creator = $creator;
 		}
 	    
 		/**
@@ -130,9 +133,9 @@
 
 			$testQuery = $query_prepare->execute([$id]);
 
-			$data = $query_prepare->fetch(PDO::FETCH_ASSOC);
+			$data = $query_prepare->fetch();
 
-			$conf = new Conference($data["id_conf"] ?? 'default value', $data["nom_conf"] ?? 'default value', $data["description"] ?? 'default value', $data["d_day"] ?? 'default value', $data["organisateurs"], $data["lieu"]);
+			$conf = new Conference($data["id_conf"] ?? 'default value', $data["nom_conf"] ?? 'default value', $data["description"] ?? 'default value', $data["d_day"] ?? 'default value', $data["organisateurs"], $data["lieu"], $data["status"], $data["last_modification_date"], $data["creator"]);
 
 			return $conf;
 		}

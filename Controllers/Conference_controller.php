@@ -1,6 +1,9 @@
 <?php
 require_once("Models/conference.php");
 require_once("Controllers/User_controller.php");
+require_once("Models/publication.php");
+require_once("Models/activite.php");
+require_once("Models/appel_candidature.php");
 
 class Conference_controller{
 
@@ -8,6 +11,24 @@ class Conference_controller{
         $data = Conference::getAllConference();
         $check_connection = User_controller::checkLog();
 
+        $active_voir_plus = false;
+
+        require_once("Views/acceuil.php");
+    }
+
+    static function acceuil_Controller_Conf($id){
+        
+        $data_conference = Conference::getConference($id);
+        $data = Conference::getAllConference();
+        $data_publication = Publication::getPublication($id, 1);
+        $data_activite = Activite::getActivite($id, 1);
+        $data_appel = Appel::getAppel($id, 1);
+        
+        
+        $check_connection = User_controller::checkLog();
+
+        $active_voir_plus = true;
+        
         require_once("Views/acceuil.php");
     }
 
@@ -37,7 +58,6 @@ class Conference_controller{
             }else if(empty($lieu)){
                 $error = "Must mention lieu";
             } else{
-                // var_dump($check_connection);
                 if($check_connection != false)
                     ( new Conference(null, $conference_name, $conference_desc, $date_conference, $organisateur, $lieu) )->createConference($check_connection);
                 else

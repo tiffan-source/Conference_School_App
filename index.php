@@ -35,7 +35,11 @@ if(isset($_GET['action']) && $_GET['action']!=''){
         
     }
 }else{
-    Conference_controller::acceuil_Controller();
+    if (isset($_GET["id"])) {
+        Conference_controller::acceuil_Controller_Conf($_GET["id"]);
+    }else{
+        Conference_controller::acceuil_Controller();
+    }
 }
 
 
