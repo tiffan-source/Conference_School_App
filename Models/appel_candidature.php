@@ -6,11 +6,13 @@
 		private $id_appel;
 		private $sujet_appel;
 		private $contenu;
+		private $preoccupation_majeure;
 
-		public function __construct($id_appel = null, $sujet_appel = null, $contenu){
+		public function __construct($id_appel = null, $sujet_appel = null, $contenu, $preoccupation_majeure){
 			$this->id_appel = $id_appel;
 			$this->sujet_appel = $sujet_appel;
 			$this->contenu = $contenu;
+			$this->preoccupation_majeure = $preoccupation_majeure;
 	    }
 
 		//LES GETTERS
@@ -25,11 +27,11 @@
 		public function createAppel($id_conference){
 			$new_connection = new Connection();
 
-			$query = "INSERT INTO appel_a_candidature (id_conf_conference, sujet_appel, contenu) VALUES (?, ?, ?);";
+			$query = "INSERT INTO appel_a_candidature (id_conf_conference, sujet_appel, contenu,  preoccupation_majeure) VALUES (?, ?, ?, ?);";
 			
 			$query_prepare = $new_connection->getConnection()->prepare($query);
 
-			$result = $query_prepare->execute([$id_conference, $this->sujet_appel, $this->contenu]);
+			$result = $query_prepare->execute([$id_conference, $this->sujet_appel, $this->contenu, $this->preoccupation_majeure]);
 
 			return $result;
 		

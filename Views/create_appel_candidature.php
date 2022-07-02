@@ -49,6 +49,14 @@
                     <textarea class="text-area" name="content_appel" id="" cols="10" rows="7"></textarea>
                     <span class="error"> <?php echo $appel_description_Err;?></span>
                 </div>
+
+                <!-- <div class="create-publication-groupefield">
+                    <label class="create-publication-label" for="preo_maj">Préoccupation majeure</label>
+                    <input name = "preo_maj" type="text" id="name_publication" class="input">
+                    <span class="error"> /*<?php echo "";//$appel_preo_maj_Err ;?>*/</span>
+                </div> -->
+
+
                 <div class="create-publication-groupefield">
                     <?php if (isset($error) && !empty($error)) {?>
                     <span class="error"><?= $error ?></span>
