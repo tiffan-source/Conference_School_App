@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="Style/Modules/modal_conference.css">
     <link rel="stylesheet" href="Style/Modules/info_publication.css">
     <link rel="stylesheet" href="Style/Modules/info_conference.css">
+    <link rel="stylesheet" href="Style/Modules/info_activite.css">
+    <link rel="stylesheet" href="Style/Modules/info_appel.css">
+
     <title>Document</title>
 </head>
 <body>
