@@ -1,33 +1,39 @@
 <div class="modal_config_conference">
     <div class="modal_config_conference_head">
         <button id="prev">Prev</button>
-        <span id="content">Conference Information</span>
+        <span id="content" class="modal-config-conference-head-title">Conference Information</span>
         <button id="next">Next</button>
     </div>
 
     <div class="modal_config_conference_body">
         <div id="info_gene" class="modal_config_conference_info_gene display">
-        
-            <p>ID de la conference : <?= $data_conference->id_conf ?></p>
-            <p>Nom de la conference : <?= $data_conference->nom_conference ?></p>
-            <p>Description conference : <?= $data_conference->description ?></p>
-            <p>Status : <?= $data_conference->status ?></p>
-            <p>Jour de la conf : <?= $data_conference->d_day ?></p>
-            <p>Lieu : <?= $data_conference->lieu ?></p>
-            <p>Organisateur : <?= $data_conference->organisateur ?></p>
-            <p>Last Modif : <?= $data_conference->last_modification_date ?></p>
-            <p>Creator : <?= $data_conference->creator ?></p>
-            
+            <ul class="info-gene-ul">
+                <li class="info-gene-li"> <strong>ID de la conference :</strong>  <?= $data_conference->id_conf ?></li>
+                <li class="info-gene-li"> <strong>Nom de la conference :</strong>  <?= $data_conference->nom_conference ?></li>
+                <li class="info-gene-li"> <strong> Status :</strong> <?= $data_conference->status ?></li>
+                <li class="info-gene-li"><strong>Jour de la conf :</strong>  <?= $data_conference->d_day ?></li>
+                <li class="info-gene-li"><strong> Lieu : </strong><?= $data_conference->lieu ?></li>
+                <li class="info-gene-li"><strong> Organisateur :</strong> <?= $data_conference->organisateur ?></li>
+                <li class="info-gene-li"><strong> Last Modif :</strong> <?= $data_conference->last_modification_date ?></li>
+                <li class="info-gene-li"><strong> Creator :</strong> <?= $data_conference->creator ?></li>
+                <li class="info-gene-li"> <strong>Description conference : </strong> <br> <?= $data_conference->description ?></li>
+            </ul>            
         </div>
 
         <div id="info_publication" class="modal_config_conference_publication hidde">
-            <?php foreach($data_publication as $data_publication_item){ ?>
-                <div>
-                    <p>ID de la publication : <?= $data_publication_item->id_publication ?></p>
-                    <p>Titre de la publication : <?= $data_publication_item->titre_publication ?></p>
-                    <p>Description conference : <?= $data_publication_item->content_publication ?></p>
-                </div>
-            <?php } ?>
+            <ul class="info-publication-ul">    
+                <?php foreach($data_publication as $data_publication_item){ ?>
+                <li class="info-publication-li">
+                    <div class="info-publication-li-head">
+                        <span> <strong>Id : </strong>#<?= $data_publication_item->id_publication ?> </span>
+                        <span> <strong> Titre : </strong> <?= $data_publication_item->titre_publication ?> </span>
+                    </div>
+                    <p>
+                        <?= $data_publication_item->content_publication ?>
+                    </p>
+                </li>
+                <?php } ?>
+            </ul>
         </div>
 
         <div id="info_activity" class="modal_config_conference_activite hidde">

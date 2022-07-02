@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="Style/Modules/button.css">
     <link rel="stylesheet" href="Style/Layouts/modal_conference.layout.css">
     <link rel="stylesheet" href="Style/Modules/modal_conference.css">
+    <link rel="stylesheet" href="Style/Modules/info_publication.css">
+    <link rel="stylesheet" href="Style/Modules/info_conference.css">
     <title>Document</title>
 </head>
 <body>

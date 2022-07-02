@@ -1,0 +1,20 @@
+.info-publication-li{
+    margin: 1rem auto;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #d5e3ec;
+    border-radius: 10px;
+    box-shadow: 0 0 4px #D8E1E8;
+}
+
+.info-publication-li-head{
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.info-publication-li-head strong{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
