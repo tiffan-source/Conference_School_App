@@ -86,4 +86,43 @@ class Conference_controller{
 
         require_once("Views/supprimer.php");
     }
+
+    static function generation_Conference($id){
+        $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Conference_generetor'.DIRECTORY_SEPARATOR.'.env';
+
+        $data = 'USER_HOST = "localhost"'.PHP_EOL.'USER_DBNAME = "Conference"'.PHP_EOL.'USER_USERNAME = "agent"'.PHP_EOL.'USER_PWD = "agent"'.PHP_EOL.'CONFERENCE_TEST = '.$id;
+
+        file_put_contents($file, $data);
+
+
+         
+        // Enter the name of directory
+        $pathdir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Conference_generetor';
+
+        var_dump($pathdir);
+        
+        // Enter the name to creating zipped directory
+        $zipcreated = 'NewConference'.$id.'.zip';
+        var_dump($zipcreated);
+        
+        // Create new zip class
+        $zip = new ZipArchive;
+        var_dump($zip);
+        
+        if($zip -> open($zipcreated, ZipArchive::CREATE ) === TRUE) {
+            
+            // Store the path into the variable
+            $dir = opendir($pathdir);
+            
+            while($file = readdir($dir)) {
+                if(is_file($pathdir.$file)) {
+                    $zip -> addFile($pathdir.$file, $file);
+                }
+            }
+            $zip ->close();
+        }
+
+
+        header("Location: index.php");
+    }
 }
